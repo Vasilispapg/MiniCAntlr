@@ -1,0 +1,9 @@
+if(a<1){
+b=2;
+while(a){
+function(kati=2){
+	function(){
+	}
+}
+}
+}
