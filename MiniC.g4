@@ -4,41 +4,53 @@ grammar MiniC;
  * Parser Rules
  */
 
-compileUnit:	statement
-	| compound_st statement
+compileUnit:	statement+
 	;
 
-statement:
-	|	(expr SEMICOLON)+
-	|	FUNCTION LP expr* RP compound_st
-	|	IF LP expr+ RP compound_st
-	|	WHILE LP expr+ RP compound_st
+	statement:	(expr SEMICOLON)+
+	|	func_deffinition_st
+	|	func_call_st
+	|	if_st
+	|	while_st
 	|	SEMICOLON+
-	|	RETURN expr SEMICOLON
+	|	breakreturn_st
 	;
+
+	breakreturn_st: 	BREAK SEMICOLON #Break
+	|	RETURN expr SEMICOLON	#Return
+	;
+
+	while_st:	WHILE LP expr RP compound_st
+			;
+	if_st:	IF LP expr RP compound_st
+		  ;
 
 	compound_st : 	LBRACKET statement* RBRACKET
-	|		LBRACKET  RBRACKET
-	;
+		;
 
-expr: NUM							#Number
-	|   VARIABLE					#Variable
-	|	expr op=(MULT|DIV)expr		#Mult_div
-	|	expr op=(PLUS|MINUS)expr	#Add_sub
-	|	VARIABLE ASSIGN expr		#Assignment
-	|	LP expr RP					#Parenthesis
-	|	expr AND expr	#AndOperator
-	|	expr OR expr	#OrOperator
-	|	expr LT expr	#LtOperator
-	|	expr GT expr	#GtOperator
-	|	expr LTE expr	#LteOperator
-	|	expr GTE expr	#GteOperator
-	|	NOT expr		#NotOperator
-	|	expr EQUAL expr	#EqualOperator
-	|	expr NEQUAL expr #NequalOperator
-	|	expr PLUSPLUS #PlusplusOperator
-	;
+	func_deffinition_st:	FUNCTION VARIABLE? LP parameters RP compound_st
+		;
 
+	func_call_st:	VARIABLE LP parameters RP SEMICOLON
+					;
+
+	parameters: VARIABLE*
+		|	parameters COMMA VARIABLE
+		;
+
+	expr: last #last_expr					
+		|	expr op=(MULT|DIV)expr		#Mult_div
+		|	expr op=(PLUS|MINUS)expr	#Add_sub
+		|	VARIABLE ASSIGN expr		#Assignment
+		|	LP expr RP					#Parenthesis
+		|	expr op=(AND|OR|LT|GT|LTE|GTE|EQUAL|NEQUAL) expr	#Operators
+		|	NOT expr		#NotOperator
+		|	expr PLUSPLUS #PlusplusOperator
+		;
+
+last : NUM	#Number
+	   | VARIABLE #Variable
+	   ;
 
 /*
  * Lexer Rules
@@ -50,14 +62,7 @@ BREAK: 'break';
 ELSE:'else';
 RETURN:'return';
 FUNCTION:'function';
-
-UNION:'union';
-UNIQUE:'unique';		
-JOIN:'join';	
-SETXOR:'setxor';	
-SETDIFF:'setdiff';		
-ISMEMBER:'ismember';		
-
+		
 AND:'&&';	
 OR:'||';	
 NOT:'!';		

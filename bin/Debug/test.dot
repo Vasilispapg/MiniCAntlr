@@ -1,0 +1,20 @@
+digraph G{
+"CompileUnit_0"->"Name=a Function_Deffinition_1";
+"Name=a Function_Deffinition_1"->"Parameter_2 name=c";
+"Name=a Function_Deffinition_1"->"Parameter_3 name=b";
+"Name=a Function_Deffinition_1"->"Name=d Function_Call_4";
+"Name=d Function_Call_4"->"Parameter_5 name=a";
+"Name=d Function_Call_4"->"Parameter_6 name=b";
+"Name=a Function_Deffinition_1"->"Assignment_7";
+"Assignment_7"->"Variable_8 name=a";
+"Assignment_7"->"Number_9 num=2";
+"Name=a Function_Deffinition_1"->"PlusPlusOperator_10";
+"PlusPlusOperator_10"->"Variable_11 name=b";
+"CompileUnit_0"->"Name=d Function_Deffinition_12";
+"Name=d Function_Deffinition_12"->"Parameter_13 name=s";
+"Name=d Function_Deffinition_12"->"Parameter_14 name=c";
+"Name=d Function_Deffinition_12"->"While_Statement_15";
+"While_Statement_15"->"LtOperator_16";
+"LtOperator_16"->"Variable_17 name=kati";
+"LtOperator_16"->"Number_18 num=2";
+}

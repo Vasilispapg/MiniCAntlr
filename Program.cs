@@ -20,6 +20,9 @@ namespace MiniC
             MiniCParser parser = new MiniCParser(tokens);
             IParseTree tree = parser.compileUnit();  //root node
              Console.WriteLine(tree.ToStringTree());
+
+             MiniCPrinterVisitor miniCPrinter = new MiniCPrinterVisitor();
+             miniCPrinter.Visit(tree);
         }
     }
 }

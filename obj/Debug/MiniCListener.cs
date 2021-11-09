@@ -32,108 +32,56 @@ using IToken = Antlr4.Runtime.IToken;
 [System.CLSCompliant(false)]
 public interface IMiniCListener : IParseTreeListener {
 	/// <summary>
-	/// Enter a parse tree produced by the <c>OrOperator</c>
-	/// labeled alternative in <see cref="MiniCParser.expr"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void EnterOrOperator([NotNull] MiniCParser.OrOperatorContext context);
-	/// <summary>
-	/// Exit a parse tree produced by the <c>OrOperator</c>
-	/// labeled alternative in <see cref="MiniCParser.expr"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void ExitOrOperator([NotNull] MiniCParser.OrOperatorContext context);
-
-	/// <summary>
-	/// Enter a parse tree produced by the <c>NequalOperator</c>
-	/// labeled alternative in <see cref="MiniCParser.expr"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void EnterNequalOperator([NotNull] MiniCParser.NequalOperatorContext context);
-	/// <summary>
-	/// Exit a parse tree produced by the <c>NequalOperator</c>
-	/// labeled alternative in <see cref="MiniCParser.expr"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void ExitNequalOperator([NotNull] MiniCParser.NequalOperatorContext context);
-
-	/// <summary>
 	/// Enter a parse tree produced by the <c>Variable</c>
-	/// labeled alternative in <see cref="MiniCParser.expr"/>.
+	/// labeled alternative in <see cref="MiniCParser.last"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	void EnterVariable([NotNull] MiniCParser.VariableContext context);
 	/// <summary>
 	/// Exit a parse tree produced by the <c>Variable</c>
-	/// labeled alternative in <see cref="MiniCParser.expr"/>.
+	/// labeled alternative in <see cref="MiniCParser.last"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	void ExitVariable([NotNull] MiniCParser.VariableContext context);
 
 	/// <summary>
-	/// Enter a parse tree produced by the <c>AndOperator</c>
-	/// labeled alternative in <see cref="MiniCParser.expr"/>.
+	/// Enter a parse tree produced by the <c>Number</c>
+	/// labeled alternative in <see cref="MiniCParser.last"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterAndOperator([NotNull] MiniCParser.AndOperatorContext context);
+	void EnterNumber([NotNull] MiniCParser.NumberContext context);
 	/// <summary>
-	/// Exit a parse tree produced by the <c>AndOperator</c>
-	/// labeled alternative in <see cref="MiniCParser.expr"/>.
+	/// Exit a parse tree produced by the <c>Number</c>
+	/// labeled alternative in <see cref="MiniCParser.last"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitAndOperator([NotNull] MiniCParser.AndOperatorContext context);
+	void ExitNumber([NotNull] MiniCParser.NumberContext context);
 
 	/// <summary>
-	/// Enter a parse tree produced by the <c>Add_sub</c>
-	/// labeled alternative in <see cref="MiniCParser.expr"/>.
+	/// Enter a parse tree produced by the <c>Return</c>
+	/// labeled alternative in <see cref="MiniCParser.breakreturn_st"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterAdd_sub([NotNull] MiniCParser.Add_subContext context);
+	void EnterReturn([NotNull] MiniCParser.ReturnContext context);
 	/// <summary>
-	/// Exit a parse tree produced by the <c>Add_sub</c>
-	/// labeled alternative in <see cref="MiniCParser.expr"/>.
+	/// Exit a parse tree produced by the <c>Return</c>
+	/// labeled alternative in <see cref="MiniCParser.breakreturn_st"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitAdd_sub([NotNull] MiniCParser.Add_subContext context);
+	void ExitReturn([NotNull] MiniCParser.ReturnContext context);
 
 	/// <summary>
-	/// Enter a parse tree produced by the <c>GteOperator</c>
-	/// labeled alternative in <see cref="MiniCParser.expr"/>.
+	/// Enter a parse tree produced by the <c>Break</c>
+	/// labeled alternative in <see cref="MiniCParser.breakreturn_st"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterGteOperator([NotNull] MiniCParser.GteOperatorContext context);
+	void EnterBreak([NotNull] MiniCParser.BreakContext context);
 	/// <summary>
-	/// Exit a parse tree produced by the <c>GteOperator</c>
-	/// labeled alternative in <see cref="MiniCParser.expr"/>.
+	/// Exit a parse tree produced by the <c>Break</c>
+	/// labeled alternative in <see cref="MiniCParser.breakreturn_st"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitGteOperator([NotNull] MiniCParser.GteOperatorContext context);
-
-	/// <summary>
-	/// Enter a parse tree produced by the <c>Mult_div</c>
-	/// labeled alternative in <see cref="MiniCParser.expr"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void EnterMult_div([NotNull] MiniCParser.Mult_divContext context);
-	/// <summary>
-	/// Exit a parse tree produced by the <c>Mult_div</c>
-	/// labeled alternative in <see cref="MiniCParser.expr"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void ExitMult_div([NotNull] MiniCParser.Mult_divContext context);
-
-	/// <summary>
-	/// Enter a parse tree produced by the <c>EqualOperator</c>
-	/// labeled alternative in <see cref="MiniCParser.expr"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void EnterEqualOperator([NotNull] MiniCParser.EqualOperatorContext context);
-	/// <summary>
-	/// Exit a parse tree produced by the <c>EqualOperator</c>
-	/// labeled alternative in <see cref="MiniCParser.expr"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void ExitEqualOperator([NotNull] MiniCParser.EqualOperatorContext context);
+	void ExitBreak([NotNull] MiniCParser.BreakContext context);
 
 	/// <summary>
 	/// Enter a parse tree produced by the <c>Assignment</c>
@@ -149,19 +97,6 @@ public interface IMiniCListener : IParseTreeListener {
 	void ExitAssignment([NotNull] MiniCParser.AssignmentContext context);
 
 	/// <summary>
-	/// Enter a parse tree produced by the <c>LteOperator</c>
-	/// labeled alternative in <see cref="MiniCParser.expr"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void EnterLteOperator([NotNull] MiniCParser.LteOperatorContext context);
-	/// <summary>
-	/// Exit a parse tree produced by the <c>LteOperator</c>
-	/// labeled alternative in <see cref="MiniCParser.expr"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void ExitLteOperator([NotNull] MiniCParser.LteOperatorContext context);
-
-	/// <summary>
 	/// Enter a parse tree produced by the <c>Parenthesis</c>
 	/// labeled alternative in <see cref="MiniCParser.expr"/>.
 	/// </summary>
@@ -175,43 +110,43 @@ public interface IMiniCListener : IParseTreeListener {
 	void ExitParenthesis([NotNull] MiniCParser.ParenthesisContext context);
 
 	/// <summary>
-	/// Enter a parse tree produced by the <c>Number</c>
+	/// Enter a parse tree produced by the <c>Operators</c>
 	/// labeled alternative in <see cref="MiniCParser.expr"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterNumber([NotNull] MiniCParser.NumberContext context);
+	void EnterOperators([NotNull] MiniCParser.OperatorsContext context);
 	/// <summary>
-	/// Exit a parse tree produced by the <c>Number</c>
+	/// Exit a parse tree produced by the <c>Operators</c>
 	/// labeled alternative in <see cref="MiniCParser.expr"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitNumber([NotNull] MiniCParser.NumberContext context);
+	void ExitOperators([NotNull] MiniCParser.OperatorsContext context);
 
 	/// <summary>
-	/// Enter a parse tree produced by the <c>GtOperator</c>
+	/// Enter a parse tree produced by the <c>last_expr</c>
 	/// labeled alternative in <see cref="MiniCParser.expr"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterGtOperator([NotNull] MiniCParser.GtOperatorContext context);
+	void EnterLast_expr([NotNull] MiniCParser.Last_exprContext context);
 	/// <summary>
-	/// Exit a parse tree produced by the <c>GtOperator</c>
+	/// Exit a parse tree produced by the <c>last_expr</c>
 	/// labeled alternative in <see cref="MiniCParser.expr"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitGtOperator([NotNull] MiniCParser.GtOperatorContext context);
+	void ExitLast_expr([NotNull] MiniCParser.Last_exprContext context);
 
 	/// <summary>
-	/// Enter a parse tree produced by the <c>LtOperator</c>
+	/// Enter a parse tree produced by the <c>Add_sub</c>
 	/// labeled alternative in <see cref="MiniCParser.expr"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterLtOperator([NotNull] MiniCParser.LtOperatorContext context);
+	void EnterAdd_sub([NotNull] MiniCParser.Add_subContext context);
 	/// <summary>
-	/// Exit a parse tree produced by the <c>LtOperator</c>
+	/// Exit a parse tree produced by the <c>Add_sub</c>
 	/// labeled alternative in <see cref="MiniCParser.expr"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitLtOperator([NotNull] MiniCParser.LtOperatorContext context);
+	void ExitAdd_sub([NotNull] MiniCParser.Add_subContext context);
 
 	/// <summary>
 	/// Enter a parse tree produced by the <c>NotOperator</c>
@@ -225,6 +160,19 @@ public interface IMiniCListener : IParseTreeListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	void ExitNotOperator([NotNull] MiniCParser.NotOperatorContext context);
+
+	/// <summary>
+	/// Enter a parse tree produced by the <c>Mult_div</c>
+	/// labeled alternative in <see cref="MiniCParser.expr"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterMult_div([NotNull] MiniCParser.Mult_divContext context);
+	/// <summary>
+	/// Exit a parse tree produced by the <c>Mult_div</c>
+	/// labeled alternative in <see cref="MiniCParser.expr"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitMult_div([NotNull] MiniCParser.Mult_divContext context);
 
 	/// <summary>
 	/// Enter a parse tree produced by the <c>PlusplusOperator</c>
@@ -262,6 +210,39 @@ public interface IMiniCListener : IParseTreeListener {
 	void ExitStatement([NotNull] MiniCParser.StatementContext context);
 
 	/// <summary>
+	/// Enter a parse tree produced by <see cref="MiniCParser.breakreturn_st"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterBreakreturn_st([NotNull] MiniCParser.Breakreturn_stContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="MiniCParser.breakreturn_st"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitBreakreturn_st([NotNull] MiniCParser.Breakreturn_stContext context);
+
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="MiniCParser.while_st"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterWhile_st([NotNull] MiniCParser.While_stContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="MiniCParser.while_st"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitWhile_st([NotNull] MiniCParser.While_stContext context);
+
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="MiniCParser.if_st"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterIf_st([NotNull] MiniCParser.If_stContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="MiniCParser.if_st"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitIf_st([NotNull] MiniCParser.If_stContext context);
+
+	/// <summary>
 	/// Enter a parse tree produced by <see cref="MiniCParser.compound_st"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
@@ -273,6 +254,39 @@ public interface IMiniCListener : IParseTreeListener {
 	void ExitCompound_st([NotNull] MiniCParser.Compound_stContext context);
 
 	/// <summary>
+	/// Enter a parse tree produced by <see cref="MiniCParser.func_deffinition_st"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterFunc_deffinition_st([NotNull] MiniCParser.Func_deffinition_stContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="MiniCParser.func_deffinition_st"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitFunc_deffinition_st([NotNull] MiniCParser.Func_deffinition_stContext context);
+
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="MiniCParser.func_call_st"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterFunc_call_st([NotNull] MiniCParser.Func_call_stContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="MiniCParser.func_call_st"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitFunc_call_st([NotNull] MiniCParser.Func_call_stContext context);
+
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="MiniCParser.parameters"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterParameters([NotNull] MiniCParser.ParametersContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="MiniCParser.parameters"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitParameters([NotNull] MiniCParser.ParametersContext context);
+
+	/// <summary>
 	/// Enter a parse tree produced by <see cref="MiniCParser.expr"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
@@ -282,5 +296,16 @@ public interface IMiniCListener : IParseTreeListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	void ExitExpr([NotNull] MiniCParser.ExprContext context);
+
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="MiniCParser.last"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterLast([NotNull] MiniCParser.LastContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="MiniCParser.last"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitLast([NotNull] MiniCParser.LastContext context);
 }
 } // namespace MiniC

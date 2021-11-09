@@ -1,9 +1,10 @@
-if(a<1){
-b=2;
-while(a){
-function(kati=2){
-	function(){
+function a(c,b){
+	d(a,b);
+	a=2;
+	b++;
+}
+function d(s,c){
+	while(kati<2){
+		break;
 	}
-}
-}
 }

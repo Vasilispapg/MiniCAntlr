@@ -36,124 +36,64 @@ using ParserRuleContext = Antlr4.Runtime.ParserRuleContext;
 [System.CLSCompliant(false)]
 public partial class MiniCBaseListener : IMiniCListener {
 	/// <summary>
-	/// Enter a parse tree produced by the <c>OrOperator</c>
-	/// labeled alternative in <see cref="MiniCParser.expr"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void EnterOrOperator([NotNull] MiniCParser.OrOperatorContext context) { }
-	/// <summary>
-	/// Exit a parse tree produced by the <c>OrOperator</c>
-	/// labeled alternative in <see cref="MiniCParser.expr"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void ExitOrOperator([NotNull] MiniCParser.OrOperatorContext context) { }
-
-	/// <summary>
-	/// Enter a parse tree produced by the <c>NequalOperator</c>
-	/// labeled alternative in <see cref="MiniCParser.expr"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void EnterNequalOperator([NotNull] MiniCParser.NequalOperatorContext context) { }
-	/// <summary>
-	/// Exit a parse tree produced by the <c>NequalOperator</c>
-	/// labeled alternative in <see cref="MiniCParser.expr"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void ExitNequalOperator([NotNull] MiniCParser.NequalOperatorContext context) { }
-
-	/// <summary>
 	/// Enter a parse tree produced by the <c>Variable</c>
-	/// labeled alternative in <see cref="MiniCParser.expr"/>.
+	/// labeled alternative in <see cref="MiniCParser.last"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	public virtual void EnterVariable([NotNull] MiniCParser.VariableContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>Variable</c>
-	/// labeled alternative in <see cref="MiniCParser.expr"/>.
+	/// labeled alternative in <see cref="MiniCParser.last"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitVariable([NotNull] MiniCParser.VariableContext context) { }
 
 	/// <summary>
-	/// Enter a parse tree produced by the <c>AndOperator</c>
-	/// labeled alternative in <see cref="MiniCParser.expr"/>.
+	/// Enter a parse tree produced by the <c>Number</c>
+	/// labeled alternative in <see cref="MiniCParser.last"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void EnterAndOperator([NotNull] MiniCParser.AndOperatorContext context) { }
+	public virtual void EnterNumber([NotNull] MiniCParser.NumberContext context) { }
 	/// <summary>
-	/// Exit a parse tree produced by the <c>AndOperator</c>
-	/// labeled alternative in <see cref="MiniCParser.expr"/>.
+	/// Exit a parse tree produced by the <c>Number</c>
+	/// labeled alternative in <see cref="MiniCParser.last"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void ExitAndOperator([NotNull] MiniCParser.AndOperatorContext context) { }
+	public virtual void ExitNumber([NotNull] MiniCParser.NumberContext context) { }
 
 	/// <summary>
-	/// Enter a parse tree produced by the <c>Add_sub</c>
-	/// labeled alternative in <see cref="MiniCParser.expr"/>.
+	/// Enter a parse tree produced by the <c>Return</c>
+	/// labeled alternative in <see cref="MiniCParser.breakreturn_st"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void EnterAdd_sub([NotNull] MiniCParser.Add_subContext context) { }
+	public virtual void EnterReturn([NotNull] MiniCParser.ReturnContext context) { }
 	/// <summary>
-	/// Exit a parse tree produced by the <c>Add_sub</c>
-	/// labeled alternative in <see cref="MiniCParser.expr"/>.
+	/// Exit a parse tree produced by the <c>Return</c>
+	/// labeled alternative in <see cref="MiniCParser.breakreturn_st"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void ExitAdd_sub([NotNull] MiniCParser.Add_subContext context) { }
+	public virtual void ExitReturn([NotNull] MiniCParser.ReturnContext context) { }
 
 	/// <summary>
-	/// Enter a parse tree produced by the <c>GteOperator</c>
-	/// labeled alternative in <see cref="MiniCParser.expr"/>.
+	/// Enter a parse tree produced by the <c>Break</c>
+	/// labeled alternative in <see cref="MiniCParser.breakreturn_st"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void EnterGteOperator([NotNull] MiniCParser.GteOperatorContext context) { }
+	public virtual void EnterBreak([NotNull] MiniCParser.BreakContext context) { }
 	/// <summary>
-	/// Exit a parse tree produced by the <c>GteOperator</c>
-	/// labeled alternative in <see cref="MiniCParser.expr"/>.
+	/// Exit a parse tree produced by the <c>Break</c>
+	/// labeled alternative in <see cref="MiniCParser.breakreturn_st"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void ExitGteOperator([NotNull] MiniCParser.GteOperatorContext context) { }
-
-	/// <summary>
-	/// Enter a parse tree produced by the <c>Mult_div</c>
-	/// labeled alternative in <see cref="MiniCParser.expr"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void EnterMult_div([NotNull] MiniCParser.Mult_divContext context) { }
-	/// <summary>
-	/// Exit a parse tree produced by the <c>Mult_div</c>
-	/// labeled alternative in <see cref="MiniCParser.expr"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void ExitMult_div([NotNull] MiniCParser.Mult_divContext context) { }
-
-	/// <summary>
-	/// Enter a parse tree produced by the <c>EqualOperator</c>
-	/// labeled alternative in <see cref="MiniCParser.expr"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void EnterEqualOperator([NotNull] MiniCParser.EqualOperatorContext context) { }
-	/// <summary>
-	/// Exit a parse tree produced by the <c>EqualOperator</c>
-	/// labeled alternative in <see cref="MiniCParser.expr"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void ExitEqualOperator([NotNull] MiniCParser.EqualOperatorContext context) { }
+	public virtual void ExitBreak([NotNull] MiniCParser.BreakContext context) { }
 
 	/// <summary>
 	/// Enter a parse tree produced by the <c>Assignment</c>
@@ -171,21 +111,6 @@ public partial class MiniCBaseListener : IMiniCListener {
 	public virtual void ExitAssignment([NotNull] MiniCParser.AssignmentContext context) { }
 
 	/// <summary>
-	/// Enter a parse tree produced by the <c>LteOperator</c>
-	/// labeled alternative in <see cref="MiniCParser.expr"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void EnterLteOperator([NotNull] MiniCParser.LteOperatorContext context) { }
-	/// <summary>
-	/// Exit a parse tree produced by the <c>LteOperator</c>
-	/// labeled alternative in <see cref="MiniCParser.expr"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void ExitLteOperator([NotNull] MiniCParser.LteOperatorContext context) { }
-
-	/// <summary>
 	/// Enter a parse tree produced by the <c>Parenthesis</c>
 	/// labeled alternative in <see cref="MiniCParser.expr"/>.
 	/// <para>The default implementation does nothing.</para>
@@ -201,49 +126,49 @@ public partial class MiniCBaseListener : IMiniCListener {
 	public virtual void ExitParenthesis([NotNull] MiniCParser.ParenthesisContext context) { }
 
 	/// <summary>
-	/// Enter a parse tree produced by the <c>Number</c>
+	/// Enter a parse tree produced by the <c>Operators</c>
 	/// labeled alternative in <see cref="MiniCParser.expr"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void EnterNumber([NotNull] MiniCParser.NumberContext context) { }
+	public virtual void EnterOperators([NotNull] MiniCParser.OperatorsContext context) { }
 	/// <summary>
-	/// Exit a parse tree produced by the <c>Number</c>
+	/// Exit a parse tree produced by the <c>Operators</c>
 	/// labeled alternative in <see cref="MiniCParser.expr"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void ExitNumber([NotNull] MiniCParser.NumberContext context) { }
+	public virtual void ExitOperators([NotNull] MiniCParser.OperatorsContext context) { }
 
 	/// <summary>
-	/// Enter a parse tree produced by the <c>GtOperator</c>
+	/// Enter a parse tree produced by the <c>last_expr</c>
 	/// labeled alternative in <see cref="MiniCParser.expr"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void EnterGtOperator([NotNull] MiniCParser.GtOperatorContext context) { }
+	public virtual void EnterLast_expr([NotNull] MiniCParser.Last_exprContext context) { }
 	/// <summary>
-	/// Exit a parse tree produced by the <c>GtOperator</c>
+	/// Exit a parse tree produced by the <c>last_expr</c>
 	/// labeled alternative in <see cref="MiniCParser.expr"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void ExitGtOperator([NotNull] MiniCParser.GtOperatorContext context) { }
+	public virtual void ExitLast_expr([NotNull] MiniCParser.Last_exprContext context) { }
 
 	/// <summary>
-	/// Enter a parse tree produced by the <c>LtOperator</c>
+	/// Enter a parse tree produced by the <c>Add_sub</c>
 	/// labeled alternative in <see cref="MiniCParser.expr"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void EnterLtOperator([NotNull] MiniCParser.LtOperatorContext context) { }
+	public virtual void EnterAdd_sub([NotNull] MiniCParser.Add_subContext context) { }
 	/// <summary>
-	/// Exit a parse tree produced by the <c>LtOperator</c>
+	/// Exit a parse tree produced by the <c>Add_sub</c>
 	/// labeled alternative in <see cref="MiniCParser.expr"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void ExitLtOperator([NotNull] MiniCParser.LtOperatorContext context) { }
+	public virtual void ExitAdd_sub([NotNull] MiniCParser.Add_subContext context) { }
 
 	/// <summary>
 	/// Enter a parse tree produced by the <c>NotOperator</c>
@@ -259,6 +184,21 @@ public partial class MiniCBaseListener : IMiniCListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitNotOperator([NotNull] MiniCParser.NotOperatorContext context) { }
+
+	/// <summary>
+	/// Enter a parse tree produced by the <c>Mult_div</c>
+	/// labeled alternative in <see cref="MiniCParser.expr"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterMult_div([NotNull] MiniCParser.Mult_divContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by the <c>Mult_div</c>
+	/// labeled alternative in <see cref="MiniCParser.expr"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitMult_div([NotNull] MiniCParser.Mult_divContext context) { }
 
 	/// <summary>
 	/// Enter a parse tree produced by the <c>PlusplusOperator</c>
@@ -302,6 +242,45 @@ public partial class MiniCBaseListener : IMiniCListener {
 	public virtual void ExitStatement([NotNull] MiniCParser.StatementContext context) { }
 
 	/// <summary>
+	/// Enter a parse tree produced by <see cref="MiniCParser.breakreturn_st"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterBreakreturn_st([NotNull] MiniCParser.Breakreturn_stContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="MiniCParser.breakreturn_st"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitBreakreturn_st([NotNull] MiniCParser.Breakreturn_stContext context) { }
+
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="MiniCParser.while_st"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterWhile_st([NotNull] MiniCParser.While_stContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="MiniCParser.while_st"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitWhile_st([NotNull] MiniCParser.While_stContext context) { }
+
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="MiniCParser.if_st"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterIf_st([NotNull] MiniCParser.If_stContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="MiniCParser.if_st"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitIf_st([NotNull] MiniCParser.If_stContext context) { }
+
+	/// <summary>
 	/// Enter a parse tree produced by <see cref="MiniCParser.compound_st"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
@@ -315,6 +294,45 @@ public partial class MiniCBaseListener : IMiniCListener {
 	public virtual void ExitCompound_st([NotNull] MiniCParser.Compound_stContext context) { }
 
 	/// <summary>
+	/// Enter a parse tree produced by <see cref="MiniCParser.func_deffinition_st"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterFunc_deffinition_st([NotNull] MiniCParser.Func_deffinition_stContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="MiniCParser.func_deffinition_st"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitFunc_deffinition_st([NotNull] MiniCParser.Func_deffinition_stContext context) { }
+
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="MiniCParser.func_call_st"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterFunc_call_st([NotNull] MiniCParser.Func_call_stContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="MiniCParser.func_call_st"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitFunc_call_st([NotNull] MiniCParser.Func_call_stContext context) { }
+
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="MiniCParser.parameters"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterParameters([NotNull] MiniCParser.ParametersContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="MiniCParser.parameters"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitParameters([NotNull] MiniCParser.ParametersContext context) { }
+
+	/// <summary>
 	/// Enter a parse tree produced by <see cref="MiniCParser.expr"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
@@ -326,6 +344,19 @@ public partial class MiniCBaseListener : IMiniCListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitExpr([NotNull] MiniCParser.ExprContext context) { }
+
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="MiniCParser.last"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterLast([NotNull] MiniCParser.LastContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="MiniCParser.last"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitLast([NotNull] MiniCParser.LastContext context) { }
 
 	/// <inheritdoc/>
 	/// <remarks>The default implementation does nothing.</remarks>
