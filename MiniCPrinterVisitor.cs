@@ -19,6 +19,66 @@ namespace MiniC
         private Stack<string> m_parentsLabel = new Stack<string>();
         private static int ms_serialCounter = 0;
 
+        public override int VisitOrOperator(MiniCParser.OrOperatorContext context)
+        {
+            string label = "OrOperator_" + ms_serialCounter++;
+            m_file.WriteLine("\"{0}\"->\"{1}\";", m_parentsLabel.Peek(), label);
+            m_parentsLabel.Push(label);
+            base.VisitOrOperator(context);
+            m_parentsLabel.Pop();
+            return 0;
+        }
+
+        public override int VisitAndOperator(MiniCParser.AndOperatorContext context)
+        {
+            string label = "AndOperator_" + ms_serialCounter++;
+            m_file.WriteLine("\"{0}\"->\"{1}\";", m_parentsLabel.Peek(), label);
+            m_parentsLabel.Push(label);
+            base.VisitAndOperator(context);
+            m_parentsLabel.Pop();
+            return 0;
+        }
+
+        public override int VisitFor_st(MiniCParser.For_stContext context)
+        {
+            string label = "For_Statement_" + ms_serialCounter++;
+            m_file.WriteLine("\"{0}\"->\"{1}\";", m_parentsLabel.Peek(), label);
+            m_parentsLabel.Push(label);
+            base.VisitFor_st(context);
+            m_parentsLabel.Pop();
+            return 0;
+        }
+
+        public override int VisitDowhile_st(MiniCParser.Dowhile_stContext context)
+        {
+            string label = "DoWhile_Statement_" + ms_serialCounter++;
+            m_file.WriteLine("\"{0}\"->\"{1}\";", m_parentsLabel.Peek(), label);
+            m_parentsLabel.Push(label);
+            base.VisitDowhile_st(context);
+            m_parentsLabel.Pop();
+            return 0;
+        }
+
+        public override int VisitEqualNotOperator(MiniCParser.EqualNotOperatorContext context)
+        {
+            string label = "";
+            switch (context.op.Type)
+            {
+                case MiniCLexer.NEQUAL:
+                    label = "Nequal";
+                    break;
+                case MiniCLexer.EQUAL:
+                    label = "Equal";
+                    break;
+            }
+            label += "Operator_" + ms_serialCounter++;
+            m_file.WriteLine("\"{0}\"->\"{1}\";", m_parentsLabel.Peek(), label);
+            m_parentsLabel.Push(label);
+            base.VisitEqualNotOperator(context);
+            m_parentsLabel.Pop();
+            return 0;
+        }
+
         public override int VisitNumber(MiniCParser.NumberContext context)
         {
             //edw omws mpainei giati 
@@ -30,18 +90,8 @@ namespace MiniC
         public override int VisitOperators(MiniCParser.OperatorsContext context)
         {
             string label="";
-            switch (context.op.Type)
-            {
-                case MiniCLexer.OR:
-                    label = "Or";
-                    break;
-                case MiniCLexer.AND:
-                    label = "And";
-                    break;
-                case MiniCLexer.EQUAL:
-                    label = "Equal";
-                    break;
-                case MiniCLexer.GT:
+            switch (context.op.Type){
+            case MiniCLexer.GT:
                     label = "Gt";
                     break;
                 case MiniCLexer.GTE:
@@ -53,10 +103,7 @@ namespace MiniC
                 case MiniCLexer.LTE:
                     label = "Lte";
                     break;
-                case MiniCLexer.NEQUAL:
-                    label = "Nequal";
-                    break;
-                default: break;
+            default: break;
             }
 
             label += "Operator_"+ ms_serialCounter++;

@@ -15,7 +15,8 @@ namespace MiniC
             NT_SUBSTRACTION, NT_MULTIPLICATION, NT_DIVISION, NT_NUMBER,
             NT_VARIABLE, NT_EQUAL, NT_NEQUAL, NT_AND, NT_OR, NT_LT, NT_LTE,
             NT_GT, NT_GTE, NT_PARAMETERS, NT_FUNCTION_DEF, NT_FUNCTION_CALL, NT_COUMPOUNTSTATEMENT,
-            NT_IFSTATEMENT, NT_WHILESTATEMENT, NT_RETURN, NT_BREAK, NT_PLUSPLUS
+            NT_IFSTATEMENT, NT_WHILESTATEMENT, NT_RETURN, NT_BREAK, NT_PLUSPLUS, NT_FORSTATEMENT,
+            NT_DOWHILESTATEMENT
         }
 
         public MiniCType(NodeType nodeType) : base(nodeType)
@@ -215,6 +216,20 @@ namespace MiniC
     {
         public const int CT_LEFT = 0, CT_RIGHT = 1;
         public CGte() : base(2, MiniCType.NodeType.NT_GTE)
+        {
+        }
+    }
+    public class CFor : MiniCASTElement
+    { 
+        // public const int CT_LEFT = 0, CT_RIGHT = 1;
+        public CFor() : base(2, MiniCType.NodeType.NT_FORSTATEMENT)
+        {
+        }
+    }
+    public class CDowhile : MiniCASTElement
+    {
+        // public const int CT_LEFT = 0, CT_RIGHT = 1;
+        public CDowhile() : base(2, MiniCType.NodeType.NT_DOWHILESTATEMENT)
         {
         }
     }
