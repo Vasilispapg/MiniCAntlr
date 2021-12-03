@@ -14,9 +14,9 @@ namespace MiniC
             NT_NA, NT_COMPILEUNIT, NT_ASSIGNMENT, NT_ADDITION, NT_LASTEXPR,
             NT_SUBSTRACTION, NT_MULTIPLICATION, NT_DIVISION, NT_NUMBER,
             NT_VARIABLE, NT_EQUAL, NT_NEQUAL, NT_AND, NT_OR, NT_LT, NT_LTE,
-            NT_GT, NT_GTE, NT_PARAMETERS, NT_FUNCTION_DEF, NT_FUNCTION_CALL, NT_COUMPOUNTSTATEMENT,
+            NT_GT, NT_GTE, NT_FUNCTION_DEF, NT_FUNCTION_CALL, NT_COUMPOUNTSTATEMENT,
             NT_IFSTATEMENT, NT_WHILESTATEMENT, NT_RETURN, NT_BREAK, NT_PLUSPLUS, NT_FORSTATEMENT,
-            NT_DOWHILESTATEMENT
+            NT_DOWHILESTATEMENT,NT_NOTOPERATOR
         }
 
         public MiniCType(NodeType nodeType) : base(nodeType)
@@ -57,8 +57,8 @@ namespace MiniC
     }
     public class CCompileUnit : MiniCASTElement
     {
-        public const int CT_BODY = 0;
-        public CCompileUnit() : base(1, MiniCType.NodeType.NT_COMPILEUNIT)
+        public const int CT_STATEMENTS = 0,CT_FUNCDEF=1;
+        public CCompileUnit() : base(2, MiniCType.NodeType.NT_COMPILEUNIT)
         {
         }
     }
@@ -71,14 +71,14 @@ namespace MiniC
     }
     public class CIfstatement : MiniCASTElement
     {
-        public const int CT_LEFT = 0, CT_RIGHT = 1;
-        public CIfstatement() : base(2, MiniCType.NodeType.NT_IFSTATEMENT)
+        public const int CT_EXPR = 0, CT_IFBODY= 1, CT_ELSEBODY= 2;
+        public CIfstatement() : base(3, MiniCType.NodeType.NT_IFSTATEMENT)
         {
         }
     }
     public class CWhilestatement : MiniCASTElement
     {
-        public const int CT_LEFT = 0, CT_RIGHT = 1;
+        public const int CT_EXPR = 0, CT_COMPOUNTSTATEMENT = 1;
         public CWhilestatement() : base(2, MiniCType.NodeType.NT_WHILESTATEMENT)
         {
         }
@@ -105,14 +105,14 @@ namespace MiniC
     }
     public class CFunctiondef : MiniCASTElement
     {
-        public const int CT_LEFT = 0, CT_RIGHT = 1;//TODO edw thelei ena fix to context
-        public CFunctiondef() : base(2, MiniCType.NodeType.NT_FUNCTION_DEF)
+        public const int CT_NAME = 0, CT_ARGS = 1,CT_COMPSTATEMENT=2;//TODO edw thelei ena fix to context
+        public CFunctiondef() : base(3, MiniCType.NodeType.NT_FUNCTION_DEF)
         {
         }
     }
     public class CFunctioncall : MiniCASTElement
     {
-        public const int CT_LEFT = 0, CT_RIGHT = 1;//TODO edw thelei ena fix to context
+        public const int CT_NAME=0,CT_ARGS = 1;
         public CFunctioncall() : base(2, MiniCType.NodeType.NT_FUNCTION_CALL)
         {
         }
@@ -145,22 +145,15 @@ namespace MiniC
         {
         }
     }
-    public class CNUMBER : MiniCASTElement
-    {
-        public CNUMBER() : base(0, MiniCType.NodeType.NT_NUMBER)
-        {
-        }
-    }
     public class CVARIABLE : MiniCASTElement
     {
-        public CVARIABLE() : base(0, MiniCType.NodeType.NT_VARIABLE)
+        private string m_name;
+
+        public string MName1 => m_name;
+
+        public CVARIABLE(string name) : base(0, MiniCType.NodeType.NT_VARIABLE)
         {
-        }
-    }
-    public class CLASTExpr : MiniCASTElement
-    {
-        public CLASTExpr() : base(0, MiniCType.NodeType.NT_LASTEXPR)
-        {
+            m_name = name;
         }
     }
     public class CEqual : MiniCASTElement
@@ -219,19 +212,25 @@ namespace MiniC
         {
         }
     }
+    public class CNot : MiniCASTElement
+    {
+        public const int CT_RIGHT = 0;
+        public CNot() : base(1, MiniCType.NodeType.NT_NOTOPERATOR)
+        {
+        }
+    }
     public class CFor : MiniCASTElement
     { 
-        // public const int CT_LEFT = 0, CT_RIGHT = 1;
-        public CFor() : base(2, MiniCType.NodeType.NT_FORSTATEMENT)
+        public const int CT_INIT = 0, CT_FINAL = 1,CT_STEP=2,CT_BODY=3;
+        public CFor() : base(4, MiniCType.NodeType.NT_FORSTATEMENT)
         {
         }
     }
     public class CDowhile : MiniCASTElement
     {
-        // public const int CT_LEFT = 0, CT_RIGHT = 1;
+        public const int CT_EXPR = 1, CT_COMPSTATEMENT = 0;
         public CDowhile() : base(2, MiniCType.NodeType.NT_DOWHILESTATEMENT)
         {
         }
     }
-
 }

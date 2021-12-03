@@ -1,0 +1,11 @@
+*.csproj.user
+*.txt
+*.exe
+*.exe.config
+*.tokens
+*.pdb
+MiniC.csproj
+*.cache
+*.dll
+*.xml
+*.CopyComplete

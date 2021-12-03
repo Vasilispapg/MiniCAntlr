@@ -1,10 +1,16 @@
-function a(c,b){
-	d(a,b);
-	a=2;
-	b++;
+function a(b,c){
+	d=2;
+	b=(c+d)*d;
+	e(b,d);
+	return a;
 }
-function d(s,c){
-	while(kati<2){
+
+function e(s,c){
+	while(c!=2 && a<5){
+		a(c,s);
 		break;
 	}
+	do{
+		a++;
+	}while(a<2);
 }

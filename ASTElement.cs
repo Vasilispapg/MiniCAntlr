@@ -14,7 +14,11 @@ namespace SimpleCalc
         private string m_name;
         private static int m_serialCounter=0;
 
-        public ASTElement MParent => m_parent;
+        public ASTElement MParent
+        {
+            get => m_parent;
+            set => m_parent = value;
+        }
 
         public string MName => m_name;
 
@@ -36,6 +40,7 @@ namespace SimpleCalc
         public void AddChild(ASTElement child, int contextIndex)
         {
             m_children[contextIndex].Add(child);
+            //theloyme se poio child eimaste kai se poio context to vazoyme
         }
 
         public ASTElement GetChild(int context,int index)

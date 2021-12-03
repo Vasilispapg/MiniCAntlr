@@ -4,11 +4,10 @@ grammar MiniC;
  * Parser Rules
  */
 
-compileUnit:	statement+
+compileUnit:	(statement|func_deffinition_st)+
 	;
 
 	statement:	(expr SEMICOLON)+
-	|	func_deffinition_st
 	|	func_call_st
 	|	if_st
 	|	while_st
@@ -34,17 +33,20 @@ compileUnit:	statement+
 	if_st:	IF LP expr RP compound_st (ELSE compound_st)?
 		 ;
 
-	compound_st : 	LBRACKET statement* RBRACKET
+	compound_st : 	LBRACKET statement* RBRACKET #Compound_statement
+		;
+	
+	func_deffinition_st:	FUNCTION VARIABLE? LP fargs? RP compound_st
 		;
 
-	func_deffinition_st:	FUNCTION VARIABLE? LP parameters RP compound_st
+	func_call_st:	VARIABLE LP fargs? RP SEMICOLON
 		;
 
-	func_call_st:	VARIABLE LP parameters RP SEMICOLON
-					;
+	fargs : (VARIABLE (COMMA)?)+
+	  ;
 
-	parameters: VARIABLE (COMMA VARIABLE)*
-		;
+	
+
 
 	expr: last								#last_expr		
 		|	expr PLUSPLUS					#PlusplusOperator

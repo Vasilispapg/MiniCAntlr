@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Antlr4.Runtime.Tree;
 
 namespace MiniC
@@ -305,6 +302,7 @@ namespace MiniC
                             m_file.WriteLine("\"{0}\"->\"{1}\";", m_parentsLabel.Peek(), label);
                             break;
                         case 1:
+                            //na min ektypwnei to onoma
                             flag_func = 2; //an vreis func meta einai parametri mexri na vreis to RP -> ')'
                             break;
                         case 2:
@@ -319,6 +317,26 @@ namespace MiniC
                 default: break;
             }
             return base.VisitTerminal(node);
+        }
+
+        public override int VisitReturn(MiniCParser.ReturnContext context)
+        {
+            string label = "Return_" + ms_serialCounter++;
+            m_file.WriteLine("\"{0}\"->\"{1}\";", m_parentsLabel.Peek(), label);
+            m_parentsLabel.Push(label);
+            base.VisitReturn(context);
+            m_parentsLabel.Pop();
+            return 0;
+        }
+
+        public override int VisitBreak(MiniCParser.BreakContext context)
+        {
+            string label = "Break_" + ms_serialCounter++;
+            m_file.WriteLine("\"{0}\"->\"{1}\";", m_parentsLabel.Peek(), label);
+            m_parentsLabel.Push(label);
+            base.VisitBreak(context);
+            m_parentsLabel.Pop();
+            return 0;
         }
     }
 }
