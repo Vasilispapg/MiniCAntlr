@@ -4,22 +4,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Antlr4.Runtime.Tree;
-using SimpleCalc;
 
 namespace MiniC
 {
-    class ASTGenerator  : MiniCBaseVisitor<int>
+    public class ASTGenerator  : MiniCBaseVisitor<int>
     {
-        private MiniCASTElement m_root;
+        private ASTElement m_root;
 
-        public MiniCASTElement MRoot => m_root;
+        public ASTElement MRoot => m_root;
 
-        private Stack<(MiniCASTElement, int)> m_contextData = new Stack<(MiniCASTElement, int)>();
+        private Stack<(ASTElement, int)> m_contextData = new Stack<(ASTElement, int)>();
 
         public override int VisitReturn(MiniCParser.ReturnContext context)
         {
             CReturn node = new CReturn();
-            (MiniCASTElement, int) parent_data = m_contextData.Peek();
+            (ASTElement, int) parent_data = m_contextData.Peek();
             parent_data.Item1.AddChild(node, parent_data.Item2);
             node.MParent = parent_data.Item1;
 
@@ -33,7 +32,7 @@ namespace MiniC
         public override int VisitBreak(MiniCParser.BreakContext context)
         {
             CBreak node = new CBreak();
-            (MiniCASTElement, int) parent_data = m_contextData.Peek();
+            (ASTElement, int) parent_data = m_contextData.Peek();
             parent_data.Item1.AddChild(node, parent_data.Item2);
             node.MParent = parent_data.Item1;
 
@@ -43,7 +42,7 @@ namespace MiniC
         public override int VisitOrOperator(MiniCParser.OrOperatorContext context)
         {
             COr node = new COr();
-            (MiniCASTElement, int) parent_data = m_contextData.Peek();
+            (ASTElement, int) parent_data = m_contextData.Peek();
             parent_data.Item1.AddChild(node, parent_data.Item2);
             node.MParent = parent_data.Item1;
 
@@ -61,7 +60,7 @@ namespace MiniC
         public override int VisitAssignment(MiniCParser.AssignmentContext context)
         {
             CAssignment node = new CAssignment();
-            (MiniCASTElement, int) parent_data = m_contextData.Peek();
+            (ASTElement, int) parent_data = m_contextData.Peek();
             parent_data.Item1.AddChild(node, parent_data.Item2);
             node.MParent = parent_data.Item1;
 
@@ -79,7 +78,7 @@ namespace MiniC
         public override int VisitAndOperator(MiniCParser.AndOperatorContext context)
         {
             CAnd node = new CAnd();
-            (MiniCASTElement, int) parent_data = m_contextData.Peek();
+            (ASTElement, int) parent_data = m_contextData.Peek();
             parent_data.Item1.AddChild(node, parent_data.Item2);
             node.MParent = parent_data.Item1;
 
@@ -96,7 +95,7 @@ namespace MiniC
 
         public override int VisitAdd_sub(MiniCParser.Add_subContext context)
         {
-            (MiniCASTElement, int) parent_data;
+            (ASTElement, int) parent_data;
             switch (context.op.Type)
             {
                 case MiniCLexer.PLUS:
@@ -135,7 +134,7 @@ namespace MiniC
         public override int VisitNotOperator(MiniCParser.NotOperatorContext context)
         {
             CNot node = new CNot();
-            (MiniCASTElement, int) parent_data = m_contextData.Peek();
+            (ASTElement, int) parent_data = m_contextData.Peek();
             parent_data.Item1.AddChild(node, parent_data.Item2);
             node.MParent = parent_data.Item1;
 
@@ -148,7 +147,7 @@ namespace MiniC
 
         public override int VisitMult_div(MiniCParser.Mult_divContext context)
         {
-            (MiniCASTElement, int) parent_data;
+            (ASTElement, int) parent_data;
             switch (context.op.Type)
             {
                 case MiniCLexer.MULT:
@@ -187,7 +186,7 @@ namespace MiniC
         public override int VisitPlusplusOperator(MiniCParser.PlusplusOperatorContext context)
         {
             CPlusplus node = new CPlusplus();
-            (MiniCASTElement, int) parent_data = m_contextData.Peek();
+            (ASTElement, int) parent_data = m_contextData.Peek();
             parent_data.Item1.AddChild(node, parent_data.Item2);
             node.MParent = parent_data.Item1;
 
@@ -200,7 +199,7 @@ namespace MiniC
 
         public override int VisitEqualNotOperator(MiniCParser.EqualNotOperatorContext context)
         {
-            (MiniCASTElement, int) parent_data;
+            (ASTElement, int) parent_data;
             switch (context.op.Type)
             {
                 case MiniCLexer.EQUAL:
@@ -222,6 +221,7 @@ namespace MiniC
                     CNequal neqNode = new CNequal();
                     parent_data = m_contextData.Peek();
                     parent_data.Item1.AddChild(neqNode, parent_data.Item2);
+                    neqNode.MParent = parent_data.Item1;
 
                     m_contextData.Push((neqNode, CNequal.CT_LEFT));
                     Visit(context.expr(0));
@@ -252,7 +252,7 @@ namespace MiniC
             //Connect current node to parent
             //CompileUnit doesnt have a parent - Nothing to do!
 
-            (MiniCASTElement, int) parent_data = (m_root,CCompileUnit.CT_STATEMENTS); //Thelei egkatastasi nugget ValueTuple
+            (ASTElement, int) parent_data = (m_root,CCompileUnit.CT_STATEMENTS); //Thelei egkatastasi nugget ValueTuple
             //Tuple = anonymus struct
             m_contextData.Push(parent_data);
            
@@ -276,7 +276,7 @@ namespace MiniC
         public override int VisitFor_st(MiniCParser.For_stContext context)
         {
             CFor node = new CFor();
-            (MiniCASTElement, int) parent_data = m_contextData.Peek();
+            (ASTElement, int) parent_data = m_contextData.Peek();
 
             parent_data.Item1.AddChild(node, parent_data.Item2);
 
@@ -304,7 +304,7 @@ namespace MiniC
         public override int VisitDowhile_st(MiniCParser.Dowhile_stContext context)
         {
             CDowhile node = new CDowhile();
-            (MiniCASTElement, int) parent_data = m_contextData.Peek();
+            (ASTElement, int) parent_data = m_contextData.Peek();
 
             parent_data.Item1.AddChild(node, parent_data.Item2);
             node.MParent = parent_data.Item1;
@@ -322,7 +322,7 @@ namespace MiniC
         public override int VisitWhile_st(MiniCParser.While_stContext context)
         {
             CWhilestatement node = new CWhilestatement();
-            (MiniCASTElement, int) parent_data = m_contextData.Peek();
+            (ASTElement, int) parent_data = m_contextData.Peek();
 
             parent_data.Item1.AddChild(node, parent_data.Item2);
             node.MParent = parent_data.Item1;
@@ -341,7 +341,7 @@ namespace MiniC
         public override int VisitIf_st(MiniCParser.If_stContext context)
         {
             CIfstatement node = new CIfstatement();
-            (MiniCASTElement, int) parent_data = m_contextData.Peek();
+            (ASTElement, int) parent_data = m_contextData.Peek();
 
             parent_data.Item1.AddChild(node, parent_data.Item2);
             node.MParent = parent_data.Item1;
@@ -354,9 +354,12 @@ namespace MiniC
             Visit(context.compound_st(0));//if
             m_contextData.Pop();
 
-            m_contextData.Push((node, CIfstatement.CT_ELSEBODY));
-            Visit(context.compound_st(1));//else
-            m_contextData.Pop();
+            if (context.compound_st(1) != null)
+            {
+                m_contextData.Push((node, CIfstatement.CT_ELSEBODY));
+                Visit(context.compound_st(1));//else
+                m_contextData.Pop();
+            }
 
             return 0;
         }
@@ -367,7 +370,7 @@ namespace MiniC
             //Connect current node to parent
             //Funf_Def doesnt have a parent - Nothing to do!
 
-            (MiniCASTElement, int) parent_data = m_contextData.Peek(); //pairnei oli tin pliroforia
+            (ASTElement, int) parent_data = m_contextData.Peek(); //pairnei oli tin pliroforia
 
             parent_data.Item1.AddChild(node, parent_data.Item2); //prwto stoixeio
 
@@ -394,7 +397,7 @@ namespace MiniC
             //Connect current node to parent
             //Funf_Def doesnt have a parent - Nothing to do!
 
-            (MiniCASTElement, int) parent_data = m_contextData.Peek(); //pairnei oli tin pliroforia
+            (ASTElement, int) parent_data = m_contextData.Peek(); //pairnei oli tin pliroforia
 
             parent_data.Item1.AddChild(node, parent_data.Item2);
 
@@ -413,7 +416,7 @@ namespace MiniC
 
         public override int VisitTerminal(ITerminalNode node)
         {
-            (MiniCASTElement, int) parent_data;
+            (ASTElement, int) parent_data;
             switch (node.Symbol.Type)
             {
                 case MiniCLexer.VARIABLE:

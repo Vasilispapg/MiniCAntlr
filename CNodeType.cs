@@ -1,9 +1,11 @@
 ﻿
-namespace SimpleCalc
+namespace MiniC
 {
     public abstract class CNodeType<T>
     {
         private T m_nodeType;
+
+        public T MNodeType => m_nodeType;
 
         protected CNodeType(T nodeType)
         {
