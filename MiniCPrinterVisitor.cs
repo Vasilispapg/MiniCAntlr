@@ -165,6 +165,21 @@ namespace MiniC
             return 0;
         }
 
+        public override int VisitPrint_st(MiniCParser.Print_stContext context)
+        {
+            string label = "Print_" + ms_serialCounter++;
+
+            // print Edge
+            m_file.WriteLine("\"{0}\"->\"{1}\";", m_parentsLabel.Peek(), label);
+
+            //m_parentsLabel.Peek() -> ekei poy einai i stiva
+
+            m_parentsLabel.Push(label);
+            base.VisitPrint_st(context); /*episkepsi sta paidia toy komvou*/
+            m_parentsLabel.Pop(); /*meta aferoyme tin etiketa apo tin stiva gia ta paidia poy tha pane meta*/
+            return 0;
+        }
+
         public override int VisitParenthesis(MiniCParser.ParenthesisContext context)
         {
             string label = "Parenthesis_" + ms_serialCounter++;

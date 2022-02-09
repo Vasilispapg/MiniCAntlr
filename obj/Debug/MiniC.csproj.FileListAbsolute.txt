@@ -1,3 +1,8 @@
+C:\Users\Vasilis\source\repos\SimpleCalc\MiniC\bin\Debug\MiniC.exe.config
+C:\Users\Vasilis\source\repos\SimpleCalc\MiniC\bin\Debug\MiniC.exe
+C:\Users\Vasilis\source\repos\SimpleCalc\MiniC\bin\Debug\MiniC.pdb
+C:\Users\Vasilis\source\repos\SimpleCalc\MiniC\bin\Debug\Antlr4.Runtime.dll
+C:\Users\Vasilis\source\repos\SimpleCalc\MiniC\bin\Debug\Antlr4.Runtime.xml
 C:\Users\Vasilis\source\repos\SimpleCalc\MiniC\obj\Debug\MiniCLexer.cs
 C:\Users\Vasilis\source\repos\SimpleCalc\MiniC\obj\Debug\MiniCParser.cs
 C:\Users\Vasilis\source\repos\SimpleCalc\MiniC\obj\Debug\MiniCListener.cs
@@ -6,11 +11,9 @@ C:\Users\Vasilis\source\repos\SimpleCalc\MiniC\obj\Debug\MiniCVisitor.cs
 C:\Users\Vasilis\source\repos\SimpleCalc\MiniC\obj\Debug\MiniCBaseVisitor.cs
 C:\Users\Vasilis\source\repos\SimpleCalc\MiniC\obj\Debug\MiniC.csproj.Antlr4GeneratedCodeFileListAbsolute.txt
 C:\Users\Vasilis\source\repos\SimpleCalc\MiniC\obj\Debug\MiniC.csproj.CoreCompileInputs.cache
-C:\Users\Vasilis\source\repos\SimpleCalc\MiniC\bin\Debug\MiniC.exe.config
-C:\Users\Vasilis\source\repos\SimpleCalc\MiniC\bin\Debug\MiniC.exe
-C:\Users\Vasilis\source\repos\SimpleCalc\MiniC\bin\Debug\MiniC.pdb
-C:\Users\Vasilis\source\repos\SimpleCalc\MiniC\bin\Debug\Antlr4.Runtime.dll
-C:\Users\Vasilis\source\repos\SimpleCalc\MiniC\bin\Debug\Antlr4.Runtime.xml
 C:\Users\Vasilis\source\repos\SimpleCalc\MiniC\obj\Debug\MiniC.csproj.CopyComplete
 C:\Users\Vasilis\source\repos\SimpleCalc\MiniC\obj\Debug\MiniC.exe
 C:\Users\Vasilis\source\repos\SimpleCalc\MiniC\obj\Debug\MiniC.pdb
+C:\Users\Vasilis\source\repos\SimpleCalc\MiniC\bin\Debug\System.ValueTuple.dll
+C:\Users\Vasilis\source\repos\SimpleCalc\MiniC\bin\Debug\System.ValueTuple.xml
+C:\Users\Vasilis\source\repos\SimpleCalc\MiniC\obj\Debug\MiniC.csprojAssemblyReference.cache

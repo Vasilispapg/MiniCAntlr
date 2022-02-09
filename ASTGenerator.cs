@@ -39,6 +39,20 @@ namespace MiniC
             return 0;
         }
 
+        public override int VisitPrint_st(MiniCParser.Print_stContext context)
+        {
+            CPrint node = new CPrint();
+            (ASTElement, int) parent_data = m_contextData.Peek();
+            parent_data.Item1.AddChild(node, parent_data.Item2);
+            node.MParent = parent_data.Item1;
+
+            m_contextData.Push((node, CPrint.CT_EXPR));
+            Visit(context.prints());
+            m_contextData.Pop();
+
+            return 0;
+        }
+
         public override int VisitOrOperator(MiniCParser.OrOperatorContext context)
         {
             COr node = new COr();
@@ -282,17 +296,27 @@ namespace MiniC
 
             node.MParent = parent_data.Item1;
 
-            m_contextData.Push((node,CFor.CT_INIT));
-            Visit(context.expr(0));//init
-            m_contextData.Pop();
+            if (context.op1 != null)
+            {
+                m_contextData.Push((node, CFor.CT_INIT));
+                Visit(context.op1); //init
+                m_contextData.Pop();
+            }
 
-            m_contextData.Push((node, CFor.CT_FINAL));
-            Visit(context.expr(1));//final
-            m_contextData.Pop();
+            if (context.op2 != null)
+            {
+                m_contextData.Push((node, CFor.CT_FINAL));
+                Visit(context.op2); //init
+                m_contextData.Pop();
+            }
 
-            m_contextData.Push((node, CFor.CT_STEP));
-            Visit(context.expr(2));//step
-            m_contextData.Pop();
+            if (context.op3 != null)
+            {
+                m_contextData.Push((node, CFor.CT_STEP));
+                Visit(context.op3); //init
+                m_contextData.Pop();
+            }
+
 
             m_contextData.Push((node, CFor.CT_BODY));
             Visit(context.compound_st());//body
@@ -380,9 +404,12 @@ namespace MiniC
             Visit(context.VARIABLE());//variable
             m_contextData.Pop();
 
-            m_contextData.Push((node, CFunctiondef.CT_ARGS));
-            Visit(context.fargs());//fargs
-            m_contextData.Pop();
+            if (context.children.Count() > 6) //6 einai ta stoixeia type NAME ( ) ;, ara prepei nanai panw apo 4 gia na exei fargs
+            {
+                m_contextData.Push((node, CFunctiondef.CT_ARGS));
+                Visit(context.fargs()); //fargs
+                m_contextData.Pop();
+            }
 
             m_contextData.Push((node, CFunctiondef.CT_COMPSTATEMENT));
             Visit(context.compound_st());//compound
@@ -407,9 +434,12 @@ namespace MiniC
             Visit(context.VARIABLE());//variable
             m_contextData.Pop();
 
-            m_contextData.Push((node, CFunctioncall.CT_ARGS));
-            Visit(context.fargs());//fargs
-            m_contextData.Pop();
+            if (context.children.Count()>4) //4 einai ta stoixeia NAME ( ) ;, ara prepei nanai panw apo 4 gia na exei fargs
+            {
+                m_contextData.Push((node, CFunctioncall.CT_ARGS));
+                Visit(context.fargs()); //fargs
+                m_contextData.Pop();
+            }
 
             return 0;
         }

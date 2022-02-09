@@ -65,6 +65,22 @@ public interface IMiniCVisitor<Result> : IParseTreeVisitor<Result> {
 	Result VisitBreak([NotNull] MiniCParser.BreakContext context);
 
 	/// <summary>
+	/// Visit a parse tree produced by the <c>Compound_statement</c>
+	/// labeled alternative in <see cref="MiniCParser.compound_st"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitCompound_statement([NotNull] MiniCParser.Compound_statementContext context);
+
+	/// <summary>
+	/// Visit a parse tree produced by the <c>OrOperator</c>
+	/// labeled alternative in <see cref="MiniCParser.expr"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitOrOperator([NotNull] MiniCParser.OrOperatorContext context);
+
+	/// <summary>
 	/// Visit a parse tree produced by the <c>Assignment</c>
 	/// labeled alternative in <see cref="MiniCParser.expr"/>.
 	/// </summary>
@@ -95,6 +111,14 @@ public interface IMiniCVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	Result VisitLast_expr([NotNull] MiniCParser.Last_exprContext context);
+
+	/// <summary>
+	/// Visit a parse tree produced by the <c>AndOperator</c>
+	/// labeled alternative in <see cref="MiniCParser.expr"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitAndOperator([NotNull] MiniCParser.AndOperatorContext context);
 
 	/// <summary>
 	/// Visit a parse tree produced by the <c>Add_sub</c>
@@ -129,6 +153,14 @@ public interface IMiniCVisitor<Result> : IParseTreeVisitor<Result> {
 	Result VisitPlusplusOperator([NotNull] MiniCParser.PlusplusOperatorContext context);
 
 	/// <summary>
+	/// Visit a parse tree produced by the <c>EqualNotOperator</c>
+	/// labeled alternative in <see cref="MiniCParser.expr"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitEqualNotOperator([NotNull] MiniCParser.EqualNotOperatorContext context);
+
+	/// <summary>
 	/// Visit a parse tree produced by <see cref="MiniCParser.compileUnit"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
@@ -141,6 +173,34 @@ public interface IMiniCVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	Result VisitStatement([NotNull] MiniCParser.StatementContext context);
+
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="MiniCParser.print_st"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitPrint_st([NotNull] MiniCParser.Print_stContext context);
+
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="MiniCParser.prints"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitPrints([NotNull] MiniCParser.PrintsContext context);
+
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="MiniCParser.for_st"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitFor_st([NotNull] MiniCParser.For_stContext context);
+
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="MiniCParser.dowhile_st"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitDowhile_st([NotNull] MiniCParser.Dowhile_stContext context);
 
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="MiniCParser.breakreturn_st"/>.
@@ -185,11 +245,11 @@ public interface IMiniCVisitor<Result> : IParseTreeVisitor<Result> {
 	Result VisitFunc_call_st([NotNull] MiniCParser.Func_call_stContext context);
 
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="MiniCParser.parameters"/>.
+	/// Visit a parse tree produced by <see cref="MiniCParser.fargs"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitParameters([NotNull] MiniCParser.ParametersContext context);
+	Result VisitFargs([NotNull] MiniCParser.FargsContext context);
 
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="MiniCParser.expr"/>.

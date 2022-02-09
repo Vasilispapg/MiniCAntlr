@@ -24,11 +24,29 @@ namespace MiniC
             }
             return default(T);
         }
+
+        public virtual T VisitContextChildren(ASTElement node, int context)
+        {
+            foreach (ASTElement child in node.GetChildren(context))
+            {
+                Visit(child);
+            }
+
+            return default(T);
+        }
     }
 
-    public class MiniCASTBaseVisiton<T> : ASTBaseVisitor<T>
+    public class MiniCASTBaseVisitor<T> : ASTBaseVisitor<T>
     {
         public virtual T VisitCompileUnit(CCompileUnit node)
+        {
+            return VisitChildren(node);
+        }
+        public virtual T VisitStatement(CStatement node)
+        {
+            return VisitChildren(node);
+        }
+        public virtual T VisitCompoundStatement(CCompoundStatement node)
         {
             return VisitChildren(node);
         }
@@ -49,6 +67,10 @@ namespace MiniC
             return VisitChildren(node);
         }
         public virtual T VisitBreak(CBreak node)
+        {
+            return VisitChildren(node);
+        }
+        public virtual T VisitPrint_st(CPrint node)
         {
             return VisitChildren(node);
         }

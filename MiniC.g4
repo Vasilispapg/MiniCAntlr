@@ -4,7 +4,7 @@ grammar MiniC;
  * Parser Rules
  */
 
-compileUnit:	(statement|func_deffinition_st)+
+compileUnit:	(statement|func_deffinition_st)+ EOF
 	;
 
 	statement:	(expr SEMICOLON)+
@@ -13,11 +13,18 @@ compileUnit:	(statement|func_deffinition_st)+
 	|	while_st
 	|	for_st
 	|	dowhile_st
+	|	print_st
 	|	SEMICOLON+
 	|	breakreturn_st
 	;
 
-	for_st: FOR LP expr? SEMICOLON expr? SEMICOLON expr? RP compound_st
+	print_st: PRINT LP prints? RP SEMICOLON
+		;
+
+	prints:(expr (COMMA)?)+
+		  ;
+
+	for_st: FOR LP op1=expr? SEMICOLON op2=expr? SEMICOLON op3=expr? RP compound_st
 		;
 
 	dowhile_st: DO compound_st WHILE LP expr RP SEMICOLON
@@ -36,7 +43,7 @@ compileUnit:	(statement|func_deffinition_st)+
 	compound_st : 	LBRACKET statement* RBRACKET #Compound_statement
 		;
 	
-	func_deffinition_st:	FUNCTION VARIABLE? LP fargs? RP compound_st
+	func_deffinition_st:	TYPE FUNCTION VARIABLE? LP fargs? RP compound_st
 		;
 
 	func_call_st:	VARIABLE LP fargs? RP SEMICOLON
@@ -77,6 +84,7 @@ ELSE:'else';
 DO:'do';
 RETURN:'return';
 FUNCTION:'function';
+PRINT:'print';
 		
 AND:'&&';	
 OR:'||';	
@@ -102,10 +110,12 @@ ASSIGN: '=';
 SEMICOLON: ';';
 COMMA:',';
 
+TYPE:'int'|'float'|'char'|'string';
+
 STRING : ('"'(~[\n\"]|('\\\n')|('\\'.))*'"' | ('\''(~[\n\']|('\\\n')|('\\'.))*'\''));
 COMMENT : '/*'(.|'\n')*?'*\\' | '\\'.*;
 
-NUM: [1-9][0-9]*;
+NUM: ([1-9][0-9]*|[0]);
 VARIABLE:[a-zA-Z][a-zA-Z0-9]*;
 WS
 	:	[ \r\t\n] -> skip

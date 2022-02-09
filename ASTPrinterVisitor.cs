@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MiniC
 {
-    class ASTPrinterVisitor : MiniCASTBaseVisiton<int>
+    class ASTPrinterVisitor : MiniCASTBaseVisitor<int>
     {
         private StreamWriter m_dotFile;
         private ASTElement m_root;
@@ -151,6 +151,15 @@ namespace MiniC
             ExtractSubgraphs(node, CFunctiondef.CT_COMPSTATEMENT, CFunctiondef.msc_contextNames);
 
             base.VisitFuncDef(node);
+            return 0;
+        }
+
+        public override int VisitPrint_st(CPrint node)
+        {
+            m_dotFile.WriteLine($"{node.MParent.MName}->{node.MName};");
+            ExtractSubgraphs(node, CPrint.CT_EXPR, CPrint.msc_contextNames);
+
+            base.VisitPrint_st(node);
             return 0;
         }
 

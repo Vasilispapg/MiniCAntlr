@@ -41,6 +41,9 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net461\System.ValueTuple.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -49,18 +52,32 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ASTBaseVisitor.cs" />
+    <Compile Include="ASTElement.cs" />
+    <Compile Include="ASTGenerator.cs" />
+    <Compile Include="ASTPrinterVisitor.cs" />
+    <Compile Include="CEmmitableCodeContainer.cs" />
+    <Compile Include="CNodeType.cs" />
+    <Compile Include="CodeContainerConcrete.cs" />
+    <Compile Include="CodeContainerJavascript.cs" />
     <Compile Include="MiniC.g4.lexer.cs">
       <DependentUpon>MiniC.g4</DependentUpon>
     </Compile>
     <Compile Include="MiniC.g4.parser.cs">
       <DependentUpon>MiniC.g4</DependentUpon>
     </Compile>
+    <None Include="bin\Debug\ast.dot" />
+    <None Include="bin\Debug\test.dot" />
     <None Include="obj\Debug\MiniCBaseListener.cs" />
     <None Include="obj\Debug\MiniCBaseVisitor.cs" />
     <None Include="obj\Debug\MiniCLexer.cs" />
     <None Include="obj\Debug\MiniCListener.cs" />
     <None Include="obj\Debug\MiniCParser.cs" />
     <None Include="obj\Debug\MiniCVisitor.cs" />
+    <Compile Include="MiniC2CGeneration.cs" />
+    <Compile Include="MiniC2Javascript.cs" />
+    <Compile Include="MiniCPrinterVisitor.cs" />
+    <Compile Include="MiniCType.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -73,7 +90,12 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bin\Debug\ast.gif" />
+    <Content Include="bin\Debug\input.c" />
+    <Content Include="bin\Debug\input.js" />
     <Content Include="bin\Debug\input.txt" />
+    <Content Include="bin\Debug\mir.gif" />
+    <Content Include="bin\Debug\test.gif" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

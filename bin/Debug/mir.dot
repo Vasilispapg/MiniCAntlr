@@ -1,0 +1,133 @@
+digraph {
+	subgraph cluster0{
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		CT_CODEREPOSITORY_4;CT_CODEREPOSITORY_5;
+		label=PREPROCESSOR;
+	}
+	subgraph cluster1{
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		CT_FUNCTION_DEFINITION_1;
+		label=FUNCTION_DEFINITION;
+	}
+"CT_FILE_0"->"CT_CODEREPOSITORY_4"
+"CT_FILE_0"->"CT_CODEREPOSITORY_5"
+	subgraph cluster2{
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		CT_CODEREPOSITORY_3;
+		label=HEADER;
+	}
+	subgraph cluster3{
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		CT_COMPOUNDCONTAINER_2;
+		label=BODY;
+	}
+"CT_FUNCTION_DEFINITION_1"->"CT_CODEREPOSITORY_3"
+	subgraph cluster4{
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		CT_WHILECONTAINER_6;
+		label=COMPOUNDSTATEMENT_BODY;
+	}
+	subgraph cluster5{
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		CT_CODEREPOSITORY_22;CT_CODEREPOSITORY_25;
+		label=COMPOUNDSTATEMENT_DECLARATIONS;
+	}
+"CT_COMPOUNDCONTAINER_2"->"CT_CODEREPOSITORY_22"
+"CT_COMPOUNDCONTAINER_2"->"CT_CODEREPOSITORY_25"
+	subgraph cluster6{
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		CT_CODEREPOSITORY_8;
+		label=CONDITION;
+	}
+	subgraph cluster7{
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		CT_COMPOUNDCONTAINER_7;
+		label=BODY;
+	}
+"CT_WHILECONTAINER_6"->"CT_CODEREPOSITORY_8"
+	subgraph cluster8{
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		CT_IFCONTAINER_12;
+		label=COMPOUNDSTATEMENT_BODY;
+	}
+	subgraph cluster9{
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		CT_CODEREPOSITORY_15;
+		label=IF_CONDITION;
+	}
+	subgraph cluster10{
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		CT_COMPOUNDCONTAINER_13;
+		label=TRUE_BODY;
+	}
+	subgraph cluster11{
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		CT_COMPOUNDCONTAINER_14;
+		label=FALSE_BODY;
+	}
+"CT_IFCONTAINER_12"->"CT_CODEREPOSITORY_15"
+	subgraph cluster12{
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		CT_DOWHILECONTAINER_19;
+		label=COMPOUNDSTATEMENT_BODY;
+	}
+	subgraph cluster13{
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		CT_COMPOUNDCONTAINER_20;
+		label=BODY;
+	}
+	subgraph cluster14{
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		CT_CODEREPOSITORY_27;
+		label=CONDITION;
+	}
+	subgraph cluster15{
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;
+		CT_CODEREPOSITORY_21;CT_CODEREPOSITORY_24;
+		label=COMPOUNDSTATEMENT_BODY;
+	}
+"CT_COMPOUNDCONTAINER_20"->"CT_CODEREPOSITORY_21"
+"CT_COMPOUNDCONTAINER_20"->"CT_CODEREPOSITORY_24"
+"CT_DOWHILECONTAINER_19"->"CT_COMPOUNDCONTAINER_20"
+"CT_DOWHILECONTAINER_19"->"CT_CODEREPOSITORY_27"
+"CT_COMPOUNDCONTAINER_13"->"CT_DOWHILECONTAINER_19"
+"CT_IFCONTAINER_12"->"CT_COMPOUNDCONTAINER_13"
+"CT_IFCONTAINER_12"->"CT_COMPOUNDCONTAINER_14"
+"CT_COMPOUNDCONTAINER_7"->"CT_IFCONTAINER_12"
+"CT_WHILECONTAINER_6"->"CT_COMPOUNDCONTAINER_7"
+"CT_COMPOUNDCONTAINER_2"->"CT_WHILECONTAINER_6"
+"CT_FUNCTION_DEFINITION_1"->"CT_COMPOUNDCONTAINER_2"
+"CT_FILE_0"->"CT_FUNCTION_DEFINITION_1"
+}

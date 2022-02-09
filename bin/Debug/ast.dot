@@ -6,289 +6,132 @@ subgraph cluster0{
 node [style=filled,color=white];
 style=filled;
 color=lightgrey;
-label="statementContext";
+NT_WHILESTATEMENT_1;label="statementContext";
 }
 subgraph cluster1{
 node [style=filled,color=white];
 style=filled;
 color=lightgrey;
-NT_FUNCTION_DEF_1;NT_FUNCTION_DEF_27;label="functionDefinitionContext";
+label="functionDefinitionContext";
 }
-NT_COMPILEUNIT_0->NT_FUNCTION_DEF_1;
+NT_COMPILEUNIT_0->NT_WHILESTATEMENT_1;
 subgraph cluster2{
 node [style=filled,color=white];
 style=filled;
 color=lightgrey;
-NT_VARIABLE_2;label="nameContext";
+NT_GT_2;label="exprContext";
 }
 subgraph cluster3{
 node [style=filled,color=white];
 style=filled;
 color=lightgrey;
-NT_VARIABLE_3;NT_VARIABLE_4;label="argsContext";
+NT_IFSTATEMENT_5;label="compoundStContext";
 }
+NT_WHILESTATEMENT_1->NT_GT_2;
 subgraph cluster4{
 node [style=filled,color=white];
 style=filled;
 color=lightgrey;
-NT_ASSIGNMENT_5;NT_IFSTATEMENT_8;NT_ASSIGNMENT_14;NT_FUNCTION_CALL_21;NT_RETURN_25;label="compoundStContext";
+NT_VARIABLE_3;label="leftContext";
 }
-NT_FUNCTION_DEF_1->NT_VARIABLE_2;
-NT_FUNCTION_DEF_1->NT_VARIABLE_3;
-NT_FUNCTION_DEF_1->NT_VARIABLE_4;
-NT_FUNCTION_DEF_1->NT_ASSIGNMENT_5;
 subgraph cluster5{
 node [style=filled,color=white];
 style=filled;
 color=lightgrey;
-NT_VARIABLE_6;label="leftContext";
+NT_VARIABLE_4;label="rightContext";
 }
+NT_GT_2->NT_VARIABLE_3;
+NT_GT_2->NT_VARIABLE_4;
+NT_WHILESTATEMENT_1->NT_IFSTATEMENT_5;
 subgraph cluster6{
 node [style=filled,color=white];
 style=filled;
 color=lightgrey;
-NT_VARIABLE_7;label="rightContext";
+NT_GT_6;label="exprContext";
 }
-NT_ASSIGNMENT_5->NT_VARIABLE_6;
-NT_ASSIGNMENT_5->NT_VARIABLE_7;
-NT_FUNCTION_DEF_1->NT_IFSTATEMENT_8;
 subgraph cluster7{
 node [style=filled,color=white];
 style=filled;
 color=lightgrey;
-NT_LT_9;label="exprContext";
+NT_DOWHILESTATEMENT_9;label="ifbodyContext";
 }
 subgraph cluster8{
 node [style=filled,color=white];
 style=filled;
 color=lightgrey;
-NT_PLUSPLUS_12;label="ifbodyContext";
+label="elsebodyContext";
 }
+NT_IFSTATEMENT_5->NT_GT_6;
 subgraph cluster9{
 node [style=filled,color=white];
 style=filled;
 color=lightgrey;
-label="elsebodyContext";
+NT_VARIABLE_7;label="leftContext";
 }
-NT_IFSTATEMENT_8->NT_LT_9;
 subgraph cluster10{
 node [style=filled,color=white];
 style=filled;
 color=lightgrey;
-NT_VARIABLE_10;label="leftContext";
+NT_VARIABLE_8;label="rightContext";
 }
+NT_GT_6->NT_VARIABLE_7;
+NT_GT_6->NT_VARIABLE_8;
+NT_IFSTATEMENT_5->NT_DOWHILESTATEMENT_9;
 subgraph cluster11{
 node [style=filled,color=white];
 style=filled;
 color=lightgrey;
-NT_VARIABLE_11;label="rightContext";
+NT_LT_16;label="compoundStContext";
 }
-NT_LT_9->NT_VARIABLE_10;
-NT_LT_9->NT_VARIABLE_11;
-NT_IFSTATEMENT_8->NT_PLUSPLUS_12;
 subgraph cluster12{
 node [style=filled,color=white];
 style=filled;
 color=lightgrey;
-NT_VARIABLE_13;label="leftContext";
+NT_ASSIGNMENT_10;NT_ASSIGNMENT_13;label="exprContext";
 }
-NT_PLUSPLUS_12->NT_VARIABLE_13;
-NT_FUNCTION_DEF_1->NT_ASSIGNMENT_14;
+NT_DOWHILESTATEMENT_9->NT_ASSIGNMENT_10;
 subgraph cluster13{
 node [style=filled,color=white];
 style=filled;
 color=lightgrey;
-NT_VARIABLE_15;label="leftContext";
+NT_VARIABLE_11;label="leftContext";
 }
 subgraph cluster14{
 node [style=filled,color=white];
 style=filled;
 color=lightgrey;
-NT_MULTIPLICATION_16;label="rightContext";
+NT_VARIABLE_12;label="rightContext";
 }
-NT_ASSIGNMENT_14->NT_VARIABLE_15;
-NT_ASSIGNMENT_14->NT_MULTIPLICATION_16;
+NT_ASSIGNMENT_10->NT_VARIABLE_11;
+NT_ASSIGNMENT_10->NT_VARIABLE_12;
+NT_DOWHILESTATEMENT_9->NT_ASSIGNMENT_13;
 subgraph cluster15{
 node [style=filled,color=white];
 style=filled;
 color=lightgrey;
-NT_ADDITION_17;label="leftContext";
+NT_VARIABLE_14;label="leftContext";
 }
 subgraph cluster16{
 node [style=filled,color=white];
 style=filled;
 color=lightgrey;
-NT_VARIABLE_20;label="rightContext";
+NT_VARIABLE_15;label="rightContext";
 }
-NT_MULTIPLICATION_16->NT_ADDITION_17;
+NT_ASSIGNMENT_13->NT_VARIABLE_14;
+NT_ASSIGNMENT_13->NT_VARIABLE_15;
+NT_DOWHILESTATEMENT_9->NT_LT_16;
 subgraph cluster17{
 node [style=filled,color=white];
 style=filled;
 color=lightgrey;
-NT_VARIABLE_18;label="leftContext";
+NT_VARIABLE_17;label="leftContext";
 }
 subgraph cluster18{
 node [style=filled,color=white];
 style=filled;
 color=lightgrey;
-NT_VARIABLE_19;label="rightContext";
+NT_VARIABLE_18;label="rightContext";
 }
-NT_ADDITION_17->NT_VARIABLE_18;
-NT_ADDITION_17->NT_VARIABLE_19;
-NT_MULTIPLICATION_16->NT_VARIABLE_20;
-NT_FUNCTION_DEF_1->NT_FUNCTION_CALL_21;
-subgraph cluster19{
-node [style=filled,color=white];
-style=filled;
-color=lightgrey;
-NT_VARIABLE_22;label="nameContext";
-}
-subgraph cluster20{
-node [style=filled,color=white];
-style=filled;
-color=lightgrey;
-NT_VARIABLE_23;NT_VARIABLE_24;label="argsContext";
-}
-NT_FUNCTION_CALL_21->NT_VARIABLE_22;
-NT_FUNCTION_CALL_21->NT_VARIABLE_23;
-NT_FUNCTION_CALL_21->NT_VARIABLE_24;
-NT_FUNCTION_DEF_1->NT_RETURN_25;
-subgraph cluster21{
-node [style=filled,color=white];
-style=filled;
-color=lightgrey;
-NT_VARIABLE_26;label="exprContext";
-}
-NT_RETURN_25->NT_VARIABLE_26;
-NT_COMPILEUNIT_0->NT_FUNCTION_DEF_27;
-subgraph cluster22{
-node [style=filled,color=white];
-style=filled;
-color=lightgrey;
-NT_VARIABLE_28;label="nameContext";
-}
-subgraph cluster23{
-node [style=filled,color=white];
-style=filled;
-color=lightgrey;
-NT_VARIABLE_29;NT_VARIABLE_30;label="argsContext";
-}
-subgraph cluster24{
-node [style=filled,color=white];
-style=filled;
-color=lightgrey;
-NT_WHILESTATEMENT_31;NT_DOWHILESTATEMENT_44;label="compoundStContext";
-}
-NT_FUNCTION_DEF_27->NT_VARIABLE_28;
-NT_FUNCTION_DEF_27->NT_VARIABLE_29;
-NT_FUNCTION_DEF_27->NT_VARIABLE_30;
-NT_FUNCTION_DEF_27->NT_WHILESTATEMENT_31;
-subgraph cluster25{
-node [style=filled,color=white];
-style=filled;
-color=lightgrey;
-NT_AND_32;label="exprContext";
-}
-subgraph cluster26{
-node [style=filled,color=white];
-style=filled;
-color=lightgrey;
-NT_FUNCTION_CALL_39;NT_BREAK_43;label="compoundStContext";
-}
-NT_WHILESTATEMENT_31->NT_AND_32;
-subgraph cluster27{
-node [style=filled,color=white];
-style=filled;
-color=lightgrey;
-NT_NEQUAL_33;label="leftContext";
-}
-subgraph cluster28{
-node [style=filled,color=white];
-style=filled;
-color=lightgrey;
-NT_LT_36;label="rightContext";
-}
-NT_AND_32->NT_NEQUAL_33;
-subgraph cluster29{
-node [style=filled,color=white];
-style=filled;
-color=lightgrey;
-NT_VARIABLE_34;label="leftContext";
-}
-subgraph cluster30{
-node [style=filled,color=white];
-style=filled;
-color=lightgrey;
-NT_VARIABLE_35;label="rightContext";
-}
-NT_NEQUAL_33->NT_VARIABLE_34;
-NT_NEQUAL_33->NT_VARIABLE_35;
-NT_AND_32->NT_LT_36;
-subgraph cluster31{
-node [style=filled,color=white];
-style=filled;
-color=lightgrey;
-NT_VARIABLE_37;label="leftContext";
-}
-subgraph cluster32{
-node [style=filled,color=white];
-style=filled;
-color=lightgrey;
-NT_VARIABLE_38;label="rightContext";
-}
-NT_LT_36->NT_VARIABLE_37;
-NT_LT_36->NT_VARIABLE_38;
-NT_WHILESTATEMENT_31->NT_FUNCTION_CALL_39;
-subgraph cluster33{
-node [style=filled,color=white];
-style=filled;
-color=lightgrey;
-NT_VARIABLE_40;label="nameContext";
-}
-subgraph cluster34{
-node [style=filled,color=white];
-style=filled;
-color=lightgrey;
-NT_VARIABLE_41;NT_VARIABLE_42;label="argsContext";
-}
-NT_FUNCTION_CALL_39->NT_VARIABLE_40;
-NT_FUNCTION_CALL_39->NT_VARIABLE_41;
-NT_FUNCTION_CALL_39->NT_VARIABLE_42;
-NT_WHILESTATEMENT_31->NT_BREAK_43;
-NT_FUNCTION_DEF_27->NT_DOWHILESTATEMENT_44;
-subgraph cluster35{
-node [style=filled,color=white];
-style=filled;
-color=lightgrey;
-NT_LT_47;label="compoundStContext";
-}
-subgraph cluster36{
-node [style=filled,color=white];
-style=filled;
-color=lightgrey;
-NT_PLUSPLUS_45;label="exprContext";
-}
-NT_DOWHILESTATEMENT_44->NT_PLUSPLUS_45;
-subgraph cluster37{
-node [style=filled,color=white];
-style=filled;
-color=lightgrey;
-NT_VARIABLE_46;label="leftContext";
-}
-NT_PLUSPLUS_45->NT_VARIABLE_46;
-NT_DOWHILESTATEMENT_44->NT_LT_47;
-subgraph cluster38{
-node [style=filled,color=white];
-style=filled;
-color=lightgrey;
-NT_VARIABLE_48;label="leftContext";
-}
-subgraph cluster39{
-node [style=filled,color=white];
-style=filled;
-color=lightgrey;
-NT_VARIABLE_49;label="rightContext";
-}
-NT_LT_47->NT_VARIABLE_48;
-NT_LT_47->NT_VARIABLE_49;
+NT_LT_16->NT_VARIABLE_17;
+NT_LT_16->NT_VARIABLE_18;
 }

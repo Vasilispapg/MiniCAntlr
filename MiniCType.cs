@@ -18,8 +18,37 @@ namespace MiniC
         public override T Accept<T>(ASTBaseVisitor<T> visitor)
         {
             //kalei tin visit toy trexonta komvou
-            MiniCASTBaseVisiton<T> MiniCVisitor = visitor as MiniCASTBaseVisiton<T>;
+            MiniCASTBaseVisitor<T> MiniCVisitor = visitor as MiniCASTBaseVisitor<T>;
             return MiniCVisitor.VisitCompileUnit(this);//dineis to trexonta komvo gia na epejergastei
+        }
+    }
+    
+    public class CStatement : ASTElement
+    {
+
+        public static readonly string[] msc_contextNames = { "ifstatement", "whilestatement", "forstatement", "dowhilestatement", "semicolon", "breakreturnstatement","exprContext","printContext"};
+        public const int CT_IFSTATEMENT = 0, CT_WHILESTATEMENT = 1, CT_FORSTATEMENT = 2, CT_DOWHILESTATEMENT = 3, CT_SEMICOLON= 4, CT_BREAKRETURNSTATEMENT = 5,CT_EXPR=6,CT_PRINT=7;
+        public CStatement() : base(8, NodeType.NT_STATEMENT)
+        {
+        }
+
+        public override T Accept<T>(ASTBaseVisitor<T> visitor)
+        {
+            MiniCASTBaseVisitor<T> MiniCVisitor = visitor as MiniCASTBaseVisitor<T>;
+            return MiniCVisitor.VisitStatement(this);//dineis to trexonta komvo gia na epejergastei
+        }
+    }
+    public class CCompoundStatement : ASTElement
+    {
+        public const int CT_STATEMENT = 0;
+        public CCompoundStatement() : base(1, NodeType.NT_COUMPOUNTSTATEMENT)
+        {
+        }
+
+        public override T Accept<T>(ASTBaseVisitor<T> visitor)
+        {
+            MiniCASTBaseVisitor<T> MiniCVisitor = visitor as MiniCASTBaseVisitor<T>;
+            return MiniCVisitor.VisitCompoundStatement(this); //dineis to trexonta komvo gia na epejergastei
         }
     }
     public class CAssignment : ASTElement
@@ -33,7 +62,7 @@ namespace MiniC
 
         public override T Accept<T>(ASTBaseVisitor<T> visitor)
         {
-            MiniCASTBaseVisiton<T> MiniCVisitor = visitor as MiniCASTBaseVisiton<T>;
+            MiniCASTBaseVisitor<T> MiniCVisitor = visitor as MiniCASTBaseVisitor<T>;
             return MiniCVisitor.VisitAssignment(this);//dineis to trexonta komvo gia na epejergastei
         }
     }
@@ -47,7 +76,7 @@ namespace MiniC
 
         public override T Accept<T>(ASTBaseVisitor<T> visitor)
         {
-            MiniCASTBaseVisiton<T> MiniCVisitor = visitor as MiniCASTBaseVisiton<T>;
+            MiniCASTBaseVisitor<T> MiniCVisitor = visitor as MiniCASTBaseVisitor<T>;
             return MiniCVisitor.VisitIf(this);//dineis to trexonta komvo gia na epejergastei
         }
     }
@@ -61,7 +90,7 @@ namespace MiniC
 
         public override T Accept<T>(ASTBaseVisitor<T> visitor)
         {
-            MiniCASTBaseVisiton<T> MiniCVisitor = visitor as MiniCASTBaseVisiton<T>;
+            MiniCASTBaseVisitor<T> MiniCVisitor = visitor as MiniCASTBaseVisitor<T>;
             return MiniCVisitor.VisitWhile(this);//dineis to trexonta komvo gia na epejergastei
         }
     }
@@ -76,7 +105,7 @@ namespace MiniC
 
         public override T Accept<T>(ASTBaseVisitor<T> visitor)
         {
-            MiniCASTBaseVisiton<T> MiniCVisitor = visitor as MiniCASTBaseVisiton<T>;
+            MiniCASTBaseVisitor<T> MiniCVisitor = visitor as MiniCASTBaseVisitor<T>;
             return MiniCVisitor.VisitReturn(this);//dineis to trexonta komvo gia na epejergastei
         }
     }
@@ -89,10 +118,26 @@ namespace MiniC
 
         public override T Accept<T>(ASTBaseVisitor<T> visitor)
         {
-            MiniCASTBaseVisiton<T> MiniCVisitor = visitor as MiniCASTBaseVisiton<T>;
+            MiniCASTBaseVisitor<T> MiniCVisitor = visitor as MiniCASTBaseVisitor<T>;
             return MiniCVisitor.VisitBreak(this);//dineis to trexonta komvo gia na epejergastei
         }
     }
+
+    public class CPrint : ASTElement
+    {
+        public static readonly string[] msc_contextNames = { "exprContext" };
+        public const int CT_EXPR = 0;
+        public CPrint() : base(1, NodeType.NT_PRINT)
+        {
+        }
+
+        public override T Accept<T>(ASTBaseVisitor<T> visitor)
+        {
+            MiniCASTBaseVisitor<T> MiniCVisitor = visitor as MiniCASTBaseVisitor<T>;
+            return MiniCVisitor.VisitPrint_st(this);//dineis to trexonta komvo gia na epejergastei
+        }
+    }
+
     public class CPlusplus : ASTElement
     {
         public static readonly string[] msc_contextNames = { "leftContext"};
@@ -103,21 +148,21 @@ namespace MiniC
 
         public override T Accept<T>(ASTBaseVisitor<T> visitor)
         {
-            MiniCASTBaseVisiton<T> MiniCVisitor = visitor as MiniCASTBaseVisiton<T>;
+            MiniCASTBaseVisitor<T> MiniCVisitor = visitor as MiniCASTBaseVisitor<T>;
             return MiniCVisitor.VisitPlusPlus(this);//dineis to trexonta komvo gia na epejergastei
         }
     }
     public class CFunctiondef : ASTElement
     {
-        public static readonly string[] msc_contextNames = { "nameContext", "argsContext","compoundStContext" };
-        public const int CT_NAME = 0, CT_ARGS = 1,CT_COMPSTATEMENT=2;//TODO edw thelei ena fix to context
+        public static readonly string[] msc_contextNames = {"returnContext", "nameContext", "argsContext","compoundStContext" };
+        public const int CT_RETURN=3,CT_NAME = 0, CT_ARGS = 1,CT_COMPSTATEMENT=2;//TODO edw thelei ena fix to context
         public CFunctiondef() : base(3, NodeType.NT_FUNCTION_DEF)
         {
         }
 
         public override T Accept<T>(ASTBaseVisitor<T> visitor)
         {
-            MiniCASTBaseVisiton<T> MiniCVisitor = visitor as MiniCASTBaseVisiton<T>;
+            MiniCASTBaseVisitor<T> MiniCVisitor = visitor as MiniCASTBaseVisitor<T>;
             return MiniCVisitor.VisitFuncDef(this);//dineis to trexonta komvo gia na epejergastei
         }
     }
@@ -131,7 +176,7 @@ namespace MiniC
 
         public override T Accept<T>(ASTBaseVisitor<T> visitor)
         {
-            MiniCASTBaseVisiton<T> MiniCVisitor = visitor as MiniCASTBaseVisiton<T>;
+            MiniCASTBaseVisitor<T> MiniCVisitor = visitor as MiniCASTBaseVisitor<T>;
             return MiniCVisitor.VisitFuncCall(this);//dineis to trexonta komvo gia na epejergastei
         }
     }
@@ -145,7 +190,7 @@ namespace MiniC
 
         public override T Accept<T>(ASTBaseVisitor<T> visitor)
         {
-            MiniCASTBaseVisiton<T> MiniCVisitor = visitor as MiniCASTBaseVisiton<T>;
+            MiniCASTBaseVisitor<T> MiniCVisitor = visitor as MiniCASTBaseVisitor<T>;
             return MiniCVisitor.VisitAddition(this);//dineis to trexonta komvo gia na epejergastei
         }
     }
@@ -160,7 +205,7 @@ namespace MiniC
 
         public override T Accept<T>(ASTBaseVisitor<T> visitor)
         {
-            MiniCASTBaseVisiton<T> MiniCVisitor = visitor as MiniCASTBaseVisiton<T>;
+            MiniCASTBaseVisitor<T> MiniCVisitor = visitor as MiniCASTBaseVisitor<T>;
             return MiniCVisitor.VisitSub(this); //dineis to trexonta komvo gia na epejergastei        }
         }
     }
@@ -174,7 +219,7 @@ namespace MiniC
 
         public override T Accept<T>(ASTBaseVisitor<T> visitor)
         {
-            MiniCASTBaseVisiton<T> MiniCVisitor = visitor as MiniCASTBaseVisiton<T>;
+            MiniCASTBaseVisitor<T> MiniCVisitor = visitor as MiniCASTBaseVisitor<T>;
             return MiniCVisitor.VisitMult(this);//dineis to trexonta komvo gia na epejergastei
         }
     }
@@ -188,7 +233,7 @@ namespace MiniC
 
         public override T Accept<T>(ASTBaseVisitor<T> visitor)
         {
-            MiniCASTBaseVisiton<T> MiniCVisitor = visitor as MiniCASTBaseVisiton<T>;
+            MiniCASTBaseVisitor<T> MiniCVisitor = visitor as MiniCASTBaseVisitor<T>;
             return MiniCVisitor.VisitDiv(this);//dineis to trexonta komvo gia na epejergastei
         }
     }
@@ -196,7 +241,7 @@ namespace MiniC
     {
         private string m_name;
 
-        public string MName1 => m_name;
+        public string MName1 => m_name; //get the name  
 
         public CVARIABLE(string name) : base(0, NodeType.NT_VARIABLE)
         {
@@ -205,7 +250,7 @@ namespace MiniC
 
         public override T Accept<T>(ASTBaseVisitor<T> visitor)
         {
-            MiniCASTBaseVisiton<T> MiniCVisitor = visitor as MiniCASTBaseVisiton<T>;
+            MiniCASTBaseVisitor<T> MiniCVisitor = visitor as MiniCASTBaseVisitor<T>;
             return MiniCVisitor.VisitVARIABLE(this);//dineis to trexonta komvo gia na epejergastei
         }
     }
@@ -220,7 +265,7 @@ namespace MiniC
 
         public override T Accept<T>(ASTBaseVisitor<T> visitor)
         {
-            MiniCASTBaseVisiton<T> MiniCVisitor = visitor as MiniCASTBaseVisiton<T>;
+            MiniCASTBaseVisitor<T> MiniCVisitor = visitor as MiniCASTBaseVisitor<T>;
             return MiniCVisitor.VisitEqual(this); //dineis to trexonta komvo gia na epejergastei        }
         }
     }
@@ -235,7 +280,7 @@ namespace MiniC
 
         public override T Accept<T>(ASTBaseVisitor<T> visitor)
         {
-            MiniCASTBaseVisiton<T> MiniCVisitor = visitor as MiniCASTBaseVisiton<T>;
+            MiniCASTBaseVisitor<T> MiniCVisitor = visitor as MiniCASTBaseVisitor<T>;
             return MiniCVisitor.VisitNequal(this); //dineis to trexonta komvo gia na epejergastei        }
         }
     }
@@ -250,7 +295,7 @@ namespace MiniC
 
         public override T Accept<T>(ASTBaseVisitor<T> visitor)
         {
-            MiniCASTBaseVisiton<T> MiniCVisitor = visitor as MiniCASTBaseVisiton<T>;
+            MiniCASTBaseVisitor<T> MiniCVisitor = visitor as MiniCASTBaseVisitor<T>;
             return MiniCVisitor.VisitAnd(this); //dineis to trexonta komvo gia na epejergastei        }
         }
     }
@@ -265,7 +310,7 @@ namespace MiniC
 
         public override T Accept<T>(ASTBaseVisitor<T> visitor)
         {
-            MiniCASTBaseVisiton<T> MiniCVisitor = visitor as MiniCASTBaseVisiton<T>;
+            MiniCASTBaseVisitor<T> MiniCVisitor = visitor as MiniCASTBaseVisitor<T>;
             return MiniCVisitor.VisitOr(this); //dineis to trexonta komvo gia na epejergastei        }
         }
     }
@@ -279,7 +324,7 @@ namespace MiniC
 
         public override T Accept<T>(ASTBaseVisitor<T> visitor)
         {
-            MiniCASTBaseVisiton<T> MiniCVisitor = visitor as MiniCASTBaseVisiton<T>;
+            MiniCASTBaseVisitor<T> MiniCVisitor = visitor as MiniCASTBaseVisitor<T>;
             return MiniCVisitor.VisitLte(this);//dineis to trexonta komvo gia na epejergastei
         }
     }
@@ -293,7 +338,7 @@ namespace MiniC
 
         public override T Accept<T>(ASTBaseVisitor<T> visitor)
         {
-            MiniCASTBaseVisiton<T> MiniCVisitor = visitor as MiniCASTBaseVisiton<T>;
+            MiniCASTBaseVisitor<T> MiniCVisitor = visitor as MiniCASTBaseVisitor<T>;
             return MiniCVisitor.VisitLt(this);//dineis to trexonta komvo gia na epejergastei
         }
     }
@@ -307,7 +352,7 @@ namespace MiniC
 
         public override T Accept<T>(ASTBaseVisitor<T> visitor)
         {
-            MiniCASTBaseVisiton<T> MiniCVisitor = visitor as MiniCASTBaseVisiton<T>;
+            MiniCASTBaseVisitor<T> MiniCVisitor = visitor as MiniCASTBaseVisitor<T>;
             return MiniCVisitor.VisitGt(this);//dineis to trexonta komvo gia na epejergastei
         }
     }
@@ -322,7 +367,7 @@ namespace MiniC
 
         public override T Accept<T>(ASTBaseVisitor<T> visitor)
         {
-            MiniCASTBaseVisiton<T> MiniCVisitor = visitor as MiniCASTBaseVisiton<T>;
+            MiniCASTBaseVisitor<T> MiniCVisitor = visitor as MiniCASTBaseVisitor<T>;
             return MiniCVisitor.VisitGte(this); //dineis to trexonta komvo gia na epejergastei        }
         }
     }
@@ -336,10 +381,11 @@ namespace MiniC
 
         public override T Accept<T>(ASTBaseVisitor<T> visitor)
         {
-            MiniCASTBaseVisiton<T> MiniCVisitor = visitor as MiniCASTBaseVisiton<T>;
+            MiniCASTBaseVisitor<T> MiniCVisitor = visitor as MiniCASTBaseVisitor<T>;
             return MiniCVisitor.VisitNot(this);//dineis to trexonta komvo gia na epejergastei
         }
     }
+
     public class CFor : ASTElement
     {
         public static readonly string[] msc_contextNames = { "initContext", "finalContext","stepContext","bodyContext" };
@@ -350,7 +396,7 @@ namespace MiniC
 
         public override T Accept<T>(ASTBaseVisitor<T> visitor)
         {
-            MiniCASTBaseVisiton<T> MiniCVisitor = visitor as MiniCASTBaseVisiton<T>;
+            MiniCASTBaseVisitor<T> MiniCVisitor = visitor as MiniCASTBaseVisitor<T>;
             return MiniCVisitor.VisitFor(this);//dineis to trexonta komvo gia na epejergastei
         }
     }
@@ -365,7 +411,7 @@ namespace MiniC
 
         public override T Accept<T>(ASTBaseVisitor<T> visitor)
         {
-            MiniCASTBaseVisiton<T> MiniCVisitor = visitor as MiniCASTBaseVisiton<T>;
+            MiniCASTBaseVisitor<T> MiniCVisitor = visitor as MiniCASTBaseVisitor<T>;
             return MiniCVisitor.VisitDoWhile(this); //dineis to trexonta komvo gia na epejergastei        }
         }
     }

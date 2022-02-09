@@ -24,11 +24,31 @@ namespace MiniC
             ASTGenerator astGenerator = new ASTGenerator();
             astGenerator.Visit(tree);
 
-            MiniCASTBaseVisiton<int> dummyVisitor = new MiniCASTBaseVisiton<int>();
+            MiniCASTBaseVisitor<int> dummyVisitor = new MiniCASTBaseVisitor<int>();
             dummyVisitor.Visit(astGenerator.MRoot);
 
             ASTPrinterVisitor astPrinterVisitor = new ASTPrinterVisitor("ast.dot");
             astPrinterVisitor.Visit(astGenerator.MRoot);
+
+
+            //C
+            MiniC2CGeneration cGeneration = new MiniC2CGeneration();
+            cGeneration.Visit(astGenerator.MRoot);
+            String cFileName = Path.GetFileNameWithoutExtension(args[0]);
+
+            StreamWriter mir = new StreamWriter("mir.dot");
+            cGeneration.MTranslatedFile.PrintStructure(mir);
+
+            StreamWriter outCFile = new StreamWriter(cFileName + ".c");
+            cGeneration.MTranslatedFile.EmmitToFile(outCFile);
+            outCFile.Close();
+
+            //Javascript
+            MiniC2Javascript jvsGeneration = new MiniC2Javascript();
+            jvsGeneration.Visit(astGenerator.MRoot);
+            StreamWriter outJSFile = new StreamWriter(cFileName + ".js");
+            jvsGeneration.MTranslatedFile.EmmitToFile(outJSFile);
+            outJSFile.Close();
         }
     }
 }
